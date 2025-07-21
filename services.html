@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Services - WebDuos Pakistan</title>
+    <meta name="description" content="Explore WebDuos comprehensive web development services including website design, UI/UX design, SEO optimization, e-commerce solutions, and maintenance packages in Pakistan.">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="Web Development Services - WebDuos Pakistan">
+    <meta property="og:description" content="Professional web development services tailored for Pakistani businesses. From design to deployment, we've got you covered.">
+    <meta property="og:type" content="website">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a'
+                        },
+                        secondary: {
+                            500: '#10b981',
+                            600: '#059669'
+                        },
+                        gray: {
+                            50: '#f9fafb',
+                            100: '#f3f4f6',
+                            200: '#e5e7eb',
+                            300: '#d1d5db',
+                            400: '#9ca3af',
+                            500: '#6b7280',
+                            600: '#4b5563',
+                            700: '#374151',
+                            800: '#1f2937',
+                            900: '#111827'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- Add this to all HTML files in the head section -->
+<style>
+    /* Temporary styles for page transitions */
+    .page-transition-out {
+        animation: fadeOut 0.3s ease-in-out forwards;
+    }
+    
+    @keyframes fadeOut {
+        from { opacity: 1; }
+        to { opacity: 0; }
+    }
+</style>
+</head>
+<body class="bg-white text-gray-900">
+<header class="bg-white shadow-md sticky top-0 z-50">
+
+  <!-- Mobile Header (Logo Centered, Links in One Line) -->
+  <div class="md:hidden flex flex-col items-center py-3 space-y-2">
+    <!-- Logo Centered -->
+    <div class="text-xl font-bold text-primary-600">
+      <i class="fas fa-code mr-1"></i>WebDuos
+    </div>
+
+    <!-- Horizontal Scrollable Links -->
+    <nav class="flex overflow-x-auto space-x-2 px-4 text-sm font-medium scrollbar-hide">
+      <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Home</a>
+      <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">About</a>
+      <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Story</a>
+      <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Services</a>
+      <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Work</a>
+      <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Contact</a>
+      <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition whitespace-nowrap"> Get Quote</a>
+    </nav>
+  </div>
+
+  <!-- Desktop Header (Hidden on Mobile) -->
+  <div class="hidden md:flex justify-between items-center h-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Logo with Image -->
+<div class="text-xl font-bold text-primary-600 flex items-center">
+  <img src="logo.png" alt="WebDuos Logo" class="h-14 w-14 mr-4 object-contain">
+  WebDuos
+</div>
+
+    <!-- Desktop Navigation with Increased Gap -->
+    <nav class="flex space-x-12 text-sm font-medium">
+      <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors">Home</a>
+      <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors">About</a>
+      <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors">Story</a>
+      <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors">Services</a>
+      <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors">Work</a>
+      <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors">Contact</a>
+      <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition">Get Quote</a>
+    </nav>
+  </div>
+</header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-primary-50 to-secondary-50 py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Our Services</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Comprehensive web development solutions tailored to your business needs. From concept to launch and beyond, we've got you covered.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Web Development -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-laptop-code text-primary-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Web Development</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Custom websites built with modern technologies including React, Vue.js, Node.js, and more. Responsive, fast, and SEO-optimized.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-primary-600 mr-2"></i>
+                            Responsive Design
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-primary-600 mr-2"></i>
+                            Modern Frameworks
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-primary-600 mr-2"></i>
+                            Performance Optimization
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-primary-600 mr-2"></i>
+                            Cross-browser Compatibility
+                        </li>
+                    </ul>
+                    <div class="text-primary-600 font-semibold text-lg mb-4"></div>
+                    <a href="request.html" class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium transition-colors w-full block text-center">
+                        Get Quote
+                    </a>
+                </div>
+                
+                <!-- UI/UX Design -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                    <div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-palette text-secondary-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">UI/UX Design</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Beautiful, intuitive designs that enhance user experience and drive conversions. User-centered approach with modern aesthetics.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-secondary-600 mr-2"></i>
+                            User Research
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-secondary-600 mr-2"></i>
+                            Wireframing & Prototyping
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-secondary-600 mr-2"></i>
+                            Visual Design
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-secondary-600 mr-2"></i>
+                            Usability Testing
+                        </li>
+                    </ul>
+                    <div class="text-secondary-600 font-semibold text-lg mb-4"></div>
+                    <a href="request.html" class="bg-secondary-600 hover:bg-secondary-700 text-white px-6 py-3 rounded-lg font-medium transition-colors w-full block text-center">
+                        Get Quote
+                    </a>
+                </div>
+                
+                <!-- Additional services -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-search text-yellow-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Additional services</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Enhance your website with security, speed boosts, automation, and ongoing support for peak performance and much more for your Websites.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-yellow-600 mr-2"></i>
+                            Google Maps integration
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-yellow-600 mr-2"></i>
+                             Brand Identity  Design   
+                         </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-yellow-600 mr-2"></i>
+                            Multi-page Web structure
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-yellow-600 mr-2"></i>
+                            Custom forms
+                        </li>
+                    </ul>
+                    <div class="text-yellow-600 font-semibold text-lg mb-4"></div>
+                    <a href="request.html" class="bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-3 rounded-lg font-medium transition-colors w-full block text-center">
+                        Get Quote
+                    </a>
+                </div>
+                
+                <!-- E-commerce Solutions -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-shopping-cart text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">E-commerce Solutions</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Complete online store solutions with payment integration, inventory management, and customer analytics.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-purple-600 mr-2"></i>
+                            Payment Gateway Integration
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-purple-600 mr-2"></i>
+                            Inventory Management
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-purple-600 mr-2"></i>
+                            Order Management
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-purple-600 mr-2"></i>
+                            Customer Analytics
+                        </li>
+                    </ul>
+                    <div class="text-purple-600 font-semibold text-lg mb-4"></div>
+                    <a href="request.html" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-colors w-full block text-center">
+                        Get Quote
+                    </a>
+                </div>
+                
+                <!-- Custom & Responsive Designs-->
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                    <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-cogs text-pink-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Custom & Responsive Designs</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Custom & responsive designs that are easy to manage and visualy attractive.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-pink-600 mr-2"></i>
+                          Mobile-first, cross-browser compatibility
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-pink-600 mr-2"></i>
+                            Pixel-perfect designs across devices
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-pink-600 mr-2"></i>
+                            3+ languages used in development
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-pink-600 mr-2"></i>
+                            Frontend and backend development
+                        </li>
+                    </ul>
+                    <div class="text-pink-600 font-semibold text-lg mb-4"></div>
+                    <a href="request.html" class="bg-pink-600 hover:bg-pink-700 text-white px-6 py-3 rounded-lg font-medium transition-colors w-full block text-center">
+                        Get Quote
+                    </a>
+                </div>
+                
+                <!-- Maintenance & Support -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-tools text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Maintenance & Support</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Ongoing website maintenance, security updates, backups, and technical support to keep your site running smoothly.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-indigo-600 mr-2"></i>
+                            Regular Updates
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-indigo-600 mr-2"></i>
+                            Security Monitoring
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-indigo-600 mr-2"></i>
+                            Automated Backups
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-indigo-600 mr-2"></i>
+                            24/7 Support
+                        </li>
+                    </ul>
+                    <div class="text-indigo-600 font-semibold text-lg mb-4"></div>
+                    <a href="request.html" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition-colors w-full block text-center">
+                        Get Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Development Process</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    A proven methodology that ensures successful project delivery from start to finish.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div class="text-primary-600 text-2xl font-bold">1</div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Discovery</h3>
+                    <p class="text-gray-600">
+                        We understand your requirements, goals, and target audience to create a comprehensive project plan.
+                    </p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div class="text-secondary-600 text-2xl font-bold">2</div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Design</h3>
+                    <p class="text-gray-600">
+                        Our designers create wireframes and visual designs that align with your brand and user expectations.
+                    </p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div class="text-yellow-600 text-2xl font-bold">3</div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Development</h3>
+                    <p class="text-gray-600">
+                        Our developers bring the designs to life using modern technologies and best practices.
+                    </p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div class="text-purple-600 text-2xl font-bold">4</div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Launch</h3>
+                    <p class="text-gray-600">
+                        We thoroughly test everything before launching your website and provide ongoing support.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Technologies We Use</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                We stay current with the latest technologies to deliver cutting-edge solutions.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i class="fab fa-js text-3xl text-yellow-400"></i>
+                </div>
+                <div class="text-gray-700 font-medium">JavaScript</div>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i class="fab fa-python text-3xl text-blue-600"></i>
+                </div>
+                <div class="text-gray-700 font-medium">Python</div>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i class="fab fa-html5 text-3xl text-orange-500"></i>
+                </div>
+                <div class="text-gray-700 font-medium">HTML5</div>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i class="fab fa-css3-alt text-3xl text-blue-500"></i>
+                </div>
+                <div class="text-gray-700 font-medium">CSS3</div>
+            </div>
+        </div>
+    </div>
+</section>    <!-- CTA Section -->
+    <section class="py-20 bg-primary-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Get Started?</h2>
+            <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+                Let's discuss your project requirements and provide you with a customized solution that fits your budget and timeline.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="request.html" class="bg-white text-primary-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors">
+                    Request Quote
+                </a>
+                <a href="contact.html" class="border-2 border-white text-white hover:bg-white hover:text-primary-600 px-8 py-3 rounded-lg font-semibold transition-colors">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer class="bg-gray-900 text-white py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Footer Grid: Company Info + 3 Columns -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      
+      <!-- Company Info -->
+      <div class="space-y-4">
+        <div class="text-2xl font-bold text-primary-400">
+          <i class="fas fa-code mr-2"></i>WebDuos
+        </div>
+        <p class="text-gray-300">
+          Pakistan's premier web development agency, crafting digital excellence since 2019.
+        </p>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links / Services / Contact Info in 3 columns always -->
+      <div class="col-span-1 lg:col-span-3 w-full">
+        <div class="grid grid-cols-3 gap-4">
+
+          <!-- Quick Links -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="index.html" class="text-gray-300 hover:text-primary-400 transition-colors">Home</a></li>
+              <li><a href="about.html" class="text-gray-300 hover:text-primary-400 transition-colors">About Us</a></li>
+              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Services</a></li>
+              <li><a href="portfolio.html" class="text-gray-300 hover:text-primary-400 transition-colors">Portfolio</a></li>
+              <li><a href="contact.html" class="text-gray-300 hover:text-primary-400 transition-colors">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Services -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Services</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Web Development</a></li>
+              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">UI/UX Design</a></li>
+              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Additional Services</a></li>
+              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">E-commerce</a></li>
+              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Maintenance</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li class="flex items-start"><i class="fas fa-phone mr-2 mt-1"></i>+92 300 1234567</li>
+              <li class="flex items-start"><i class="fas fa-envelope mr-2 mt-1"></i>webduos007<br>@gmail.com</li>
+              <li class="flex items-start"><i class="fas fa-map-marker-alt mr-2 mt-1"></i>Karachi, Pakistan</li>
+              <li class="flex items-start"><i class="fas fa-clock mr-2 mt-1"></i>Mon-Fri 9AM–6PM PKT</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <hr class="border-gray-700 my-8">
+
+    <!-- Bottom Footer -->
+    <div class="flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-400">© 2024 WebDuos. All rights reserved.</p>
+      <div class="flex space-x-6 mt-4 md:mt-0">
+        <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">Privacy Policy</a>
+        <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+    <!-- Custom JavaScript -->
+        <script src="form-handler.js"></script>
+    <script src="forms.js"></script>
+    <script src="main.js"></script>
+    <script src="portfolio.js"></script>
+</body>
+</html>

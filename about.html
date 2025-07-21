@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About WebDuos - Meet Our Expert Web Development Team</title>
+    <meta name="description" content="Learn about WebDuos' mission, vision, and values. Meet our talented team of web developers, designers, and digital strategists based in Pakistan.">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="About WebDuos - Expert Web Development Team">
+    <meta property="og:description" content="Discover the story behind Pakistan's leading web development agency and meet our passionate team.">
+    <meta property="og:type" content="website">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a'
+                        },
+                        secondary: {
+                            500: '#10b981',
+                            600: '#059669'
+                        },
+                        gray: {
+                            50: '#f9fafb',
+                            100: '#f3f4f6',
+                            200: '#e5e7eb',
+                            300: '#d1d5db',
+                            400: '#9ca3af',
+                            500: '#6b7280',
+                            600: '#4b5563',
+                            700: '#374151',
+                            800: '#1f2937',
+                            900: '#111827'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- Add this to all HTML files in the head section -->
+<style>
+    /* Temporary styles for page transitions */
+    .page-transition-out {
+        animation: fadeOut 0.3s ease-in-out forwards;
+    }
+    
+    @keyframes fadeOut {
+        from { opacity: 1; }
+        to { opacity: 0; }
+    }
+</style>
+</head>
+<style>
+     /* Team Section */
+        .team-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .team-member {
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-member img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            display: block;
+            border: 3px solid black;
+        }
+
+        .team-member h3 {
+            color: #e63946;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .team-member h4 {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .team-member p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+</style>
+<body class="bg-white text-gray-900">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+
+  <!-- Mobile Header (Logo Centered, Links in One Line) -->
+  <div class="md:hidden flex flex-col items-center py-3 space-y-2">
+    <!-- Logo Centered -->
+    <div class="text-xl font-bold text-primary-600">
+      <i class="fas fa-code mr-1"></i>WebDuos
+    </div>
+
+    <!-- Horizontal Scrollable Links -->
+    <nav class="flex overflow-x-auto space-x-2 px-4 text-sm font-medium scrollbar-hide">
+      <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Home</a>
+      <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">About</a>
+      <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Story</a>
+      <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Services</a>
+      <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Work</a>
+      <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Contact</a>
+      <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition whitespace-nowrap"> Get Quote</a>
+    </nav>
+  </div>
+
+  <!-- Desktop Header (Hidden on Mobile) -->
+  <div class="hidden md:flex justify-between items-center h-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Logo with Image -->
+<div class="text-xl font-bold text-primary-600 flex items-center">
+  <img src="logo.png" alt="WebDuos Logo" class="h-14 w-14 mr-3 object-contain">
+  WebDuos
+</div>
+
+    <!-- Desktop Navigation with Increased Gap -->
+    <nav class="flex space-x-12 text-sm font-medium">
+      <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors">Home</a>
+      <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors">About</a>
+      <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors">Story</a>
+      <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors">Services</a>
+      <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors">Work</a>
+      <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors">Contact</a>
+      <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition">Get Quote</a>
+    </nav>
+  </div>
+</header>
+
+
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-primary-50 to-secondary-50 py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">About WebDuos</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We're a passionate team of developers, designers, and digital strategists dedicated to creating exceptional web experiences for businesses across Pakistan and beyond.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission, Vision, Values -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-bullseye text-primary-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        To empower businesses with innovative web solutions that drive growth, enhance user experiences, and establish strong digital presence in the competitive marketplace.
+                    </p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-eye text-secondary-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        To become Pakistan's leading web development agency, known for delivering cutting-edge solutions that transform businesses and set new standards in digital excellence.
+                    </p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-heart text-yellow-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Values</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Innovation, quality, transparency, and client success drive everything we do. We believe in building lasting partnerships through exceptional service and reliable delivery.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- Team Section -->
+    <section id="team">
+        <div class="container">
+            <h2 class="red"></h2>
+            <div class="team-container">
+                <div class="team-member">
+                    <img src="new.png" alt="Maaz bin Zubair">
+                    <h4>Maaz bin Zubair (Backend Developer)</h4>
+                    <p>Hello, I’m your back-end developer — I ensure your website runs smoothly, securely, and is built to scale with your business.</p>
+                </div>
+                <div class="team-member">
+                    <img src="new.png" alt="Adan Fatima Malik">
+                    <h4>Adan Fatima Malik (Frontend Developer)</h4>
+                    <p>Hi, I’m your front-end developer — I focus on creating clean, responsive designs that reflect your brand beautifully on every screen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose WebDuos?</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We combine technical expertise with creative vision to deliver solutions that exceed expectations.
+                </p>
+            </div>
+            
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-secondary-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Timely Delivery</h3>
+                    <p class="text-gray-600">We respect deadlines and ensure your project is delivered on time, every time.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-handshake text-yellow-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Client-Focused</h3>
+                    <p class="text-gray-600">Your success is our priority. We work closely with you throughout the entire process.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-cogs text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Latest Technology</h3>
+                    <p class="text-gray-600">We use cutting-edge tools and technologies to build future-ready solutions.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-headset text-pink-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">24/7 Support</h3>
+                    <p class="text-gray-600">Ongoing support and maintenance to keep your website running smoothly.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-dollar-sign text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Competitive Pricing</h3>
+                    <p class="text-gray-600">High-quality solutions at prices that fit your budget and deliver ROI.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-primary-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Work Together?</h2>
+            <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+                Let's discuss your project and see how we can help bring your vision to life.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="request.html" class="bg-white text-primary-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors">
+                    Start Your Project
+                </a>
+                <a href="contact.html" class="border-2 border-white text-white hover:bg-white hover:text-primary-600 px-8 py-3 rounded-lg font-semibold transition-colors">
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer class="bg-gray-900 text-white py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Footer Grid: Company Info + 3 Columns -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      
+      <!-- Company Info -->
+      <div class="space-y-4">
+        <div class="text-2xl font-bold text-primary-400">
+          <i class="fas fa-code mr-2"></i>WebDuos
+        </div>
+        <p class="text-gray-300">
+          Pakistan's premier web development agency, crafting digital excellence since 2019.
+        </p>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links / Services / Contact Info in 3 columns always -->
+      <div class="col-span-1 lg:col-span-3 w-full">
+        <div class="grid grid-cols-3 gap-4">
+
+          <!-- Quick Links -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="index.html" class="text-gray-300 hover:text-primary-400 transition-colors">Home</a></li>
+              <li><a href="about.html" class="text-gray-300 hover:text-primary-400 transition-colors">About Us</a></li>
+              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Services</a></li>
+              <li><a href="portfolio.html" class="text-gray-300 hover:text-primary-400 transition-colors">Portfolio</a></li>
+              <li><a href="contact.html" class="text-gray-300 hover:text-primary-400 transition-colors">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Services -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Services</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Web Development</a></li>
+              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">UI/UX Design</a></li>
+              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Additional Services</a></li>
+              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">E-commerce</a></li>
+              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Maintenance</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li class="flex items-start"><i class="fas fa-phone mr-2 mt-1"></i>+92 300 1234567</li>
+              <li class="flex items-start"><i class="fas fa-envelope mr-2 mt-1"></i>webduos007<br>@gmail.com</li>
+              <li class="flex items-start"><i class="fas fa-map-marker-alt mr-2 mt-1"></i>Karachi, Pakistan</li>
+              <li class="flex items-start"><i class="fas fa-clock mr-2 mt-1"></i>Mon-Fri 9AM–6PM PKT</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <hr class="border-gray-700 my-8">
+
+    <!-- Bottom Footer -->
+    <div class="flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-400">© 2024 WebDuos. All rights reserved.</p>
+      <div class="flex space-x-6 mt-4 md:mt-0">
+        <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">Privacy Policy</a>
+        <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+    <!-- Custom JavaScript -->
+    <script src="form-handler.js"></script>
+    <script src="forms.js"></script>
+    <script src="main.js"></script>
+    <script src="portfolio.js"></script></body>
+</html>
