@@ -66,27 +66,139 @@
         to { opacity: 0; }
     }
 </style>
-</head>
+<!-- Add this to your head section, after the existing styles -->
 <style>
-    .mobile-menu {
-    transition: all 0.3s ease;
-}
-
-.mobile-menu.show {
-    animation: slideDown 0.3s ease-out;
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
+    /* Enhanced smooth scrolling */
+    html {
+        scroll-behavior: smooth;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+
+    /* Dramatic page entrance */
+    @keyframes fadeInScale {
+        0% {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
     }
-}
+
+    /* Hero section animations */
+    @keyframes slideInLeft {
+        0% {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideInRight {
+        0% {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-15px);
+        }
+    }
+
+    /* Section animations */
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Glow effect for CTA */
+    @keyframes pulseGlow {
+        0% {
+            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+        }
+        70% {
+            box-shadow: 0 0 0 15px rgba(59, 130, 246, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+        }
+    }
+
+    /* Animation classes */
+    .animate-fade-in {
+        animation: fadeInScale 1s ease-out forwards;
+    }
+
+    .animate-slide-left {
+        animation: slideInLeft 0.8s ease-out forwards;
+    }
+
+    .animate-slide-right {
+        animation: slideInRight 0.8s ease-out forwards;
+    }
+
+    .animate-fade-up {
+        animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .animate-float {
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .animate-pulse-glow {
+        animation: pulseGlow 2s infinite;
+    }
+
+    /* Hover effects */
+    .hover-grow {
+        transition: all 0.3s ease;
+    }
+
+    .hover-grow:hover {
+        transform: scale(1.05);
+        z-index: 10;
+    }
+
+    /* Link hover effects */
+    .link-underline {
+        position: relative;
+    }
+
+    .link-underline::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: currentColor;
+        transition: width 0.3s ease;
+    }
+
+    .link-underline:hover::after {
+        width: 100%;
+    }
 </style>
+</head>
+
 <body class="bg-white text-gray-900">
     <!-- Header -->
 <header class="bg-white shadow-md sticky top-0 z-50">
@@ -420,5 +532,81 @@
     <script src="forms.js"></script>
     <script src="main.js"></script>
     <script src="portfolio.js"></script>
+    <script>
+    // Enhanced scroll animations
+    function animateOnScroll() {
+        const elements = document.querySelectorAll('[data-animate]');
+        const windowHeight = window.innerHeight;
+        const triggerPoint = windowHeight * 0.85;
+
+        elements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            
+            if (elementTop < triggerPoint) {
+                const animationType = element.getAttribute('data-animate');
+                element.style.animation = `${animationType} 0.8s ease-out forwards`;
+                element.style.opacity = '1';
+            }
+        });
+    }
+
+    // Initialize animations
+    document.addEventListener('DOMContentLoaded', () => {
+        // Page load animation
+        document.body.classList.add('animate-fade-in');
+
+        // Hero section animations
+        const heroContent = document.querySelector('.hero-section > div > div');
+        const heroImage = document.querySelector('.hero-section img');
+        if (heroContent) {
+            heroContent.classList.add('animate-slide-left');
+            heroContent.style.opacity = '0';
+        }
+        if (heroImage) {
+            heroImage.classList.add('animate-slide-right');
+            heroImage.style.opacity = '0';
+        }
+
+        // Add floating animation to the rating box
+        const ratingBox = document.querySelector('.hero-section .absolute');
+        if (ratingBox) ratingBox.classList.add('animate-float');
+
+        // Add pulse glow to primary CTA
+        const primaryCta = document.querySelector('.cta-button');
+        if (primaryCta) primaryCta.classList.add('animate-pulse-glow');
+
+        // Add hover-grow to cards
+        document.querySelectorAll('.service-card, .portfolio-item').forEach(card => {
+            card.classList.add('hover-grow');
+        });
+
+        // Add underline effect to nav links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.classList.add('link-underline');
+        });
+
+        // Initialize scroll animations
+        animateOnScroll();
+        window.addEventListener('scroll', animateOnScroll);
+    });
+
+    // Smooth scroll for anchor links with offset for fixed header
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
+            if (target) {
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = target.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+</script>
 </body>
 </html>
