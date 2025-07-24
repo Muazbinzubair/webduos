@@ -10,6 +10,8 @@ app = Flask(__name__)
 EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")
 EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
 
+
+
 # === Serve Home Page (index.html)
 @app.route('/')
 def home():

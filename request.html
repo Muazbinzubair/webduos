@@ -42,6 +42,61 @@
                             800: '#1f2937',
                             900: '#111827'
                         }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'fade-in-down': 'fadeInDown 0.8s ease-out forwards',
+                        'fade-in-left': 'fadeInLeft 0.8s ease-out forwards',
+                        'fade-in-right': 'fadeInRight 0.8s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'wave': 'wave 2s linear infinite',
+                        'ripple': 'ripple 1.5s ease-out infinite',
+                        'bounce-slow': 'bounceSlow 2s infinite'
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        fadeInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        pulse: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '.8' }
+                        },
+                        bounceSlow: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-8px)' }
+                        },
+                        wave: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '10%': { transform: 'rotate(14deg)' },
+                            '20%': { transform: 'rotate(-8deg)' },
+                            '30%': { transform: 'rotate(14deg)' },
+                            '40%': { transform: 'rotate(-4deg)' },
+                            '50%': { transform: 'rotate(10deg)' },
+                            '60%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(0deg)' }
+                        },
+                        ripple: {
+                            '0%': { transform: 'scale(1)', opacity: '1' },
+                            '100%': { transform: 'scale(1.5)', opacity: '0' }
+                        }
                     }
                 }
             }
@@ -52,69 +107,169 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <!-- Add this to all HTML files in the head section -->
-<style>
-    /* Temporary styles for page transitions */
-    .page-transition-out {
-        animation: fadeOut 0.3s ease-in-out forwards;
-    }
-    
-    @keyframes fadeOut {
-        from { opacity: 1; }
-        to { opacity: 0; }
-    }
-</style>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Temporary styles for page transitions */
+        .page-transition-out {
+            animation: fadeOut 0.3s ease-in-out forwards;
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        /* Form field focus animation */
+        .form-field-focus {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .form-field-focus:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3), 0 4px 6px -2px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Button hover animation */
+        .btn-hover-animate {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-hover-animate:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.4), 0 10px 10px -5px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Section entrance animation */
+        .section-entrance {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+            animation-delay: calc(var(--order) * 100ms);
+        }
+
+        /* Success/Error message animation */
+        .message-entrance {
+            animation: fadeInDown 0.5s ease-out forwards;
+        }
+
+        /* Checkbox animation */
+        .checkbox-animate {
+            transition: all 0.2s ease;
+        }
+        
+        .checkbox-animate:checked {
+            transform: scale(1.1);
+        }
+
+        /* Loading spinner animation */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .animate-spin-slow {
+            animation: spin 1.5s linear infinite;
+        }
+
+        /* Underline animation for links */
+        .link-underline {
+            position: relative;
+        }
+        
+        .link-underline::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: currentColor;
+            transition: width 0.3s ease;
+        }
+        
+        .link-underline:hover::after {
+            width: 100%;
+        }
+
+        /* Floating animation for hero elements */
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating-element {
+            animation: floating 6s ease-in-out infinite;
+        }
+
+        /* Progress bar styles */
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background-color: #e5e7eb;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+            border-radius: 3px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+    </style>
 </head>
 <body class="bg-white text-gray-900">
-<header class="bg-white shadow-md sticky top-0 z-50">
 
-  <!-- Mobile Header (Logo Centered, Links in One Line) -->
-  <div class="md:hidden flex flex-col items-center py-3 space-y-2">
-    <!-- Logo Centered -->
-    <div class="text-xl font-bold text-primary-600">
-      <i class="fas fa-code mr-1"></i>WebDuos
-    </div>
+    <header class="bg-white shadow-md sticky top-0 z-50 animate-slide-down">
+        <!-- Mobile Header (Logo Centered, Links in One Line) -->
+        <div class="md:hidden flex flex-col items-center py-3 space-y-2">
+            <!-- Logo Centered -->
+            <div class="text-xl font-bold text-primary-600 animate-scale-in">
+                <i class="fas fa-code mr-1"></i>WebDuos
+            </div>
 
-    <!-- Horizontal Scrollable Links -->
-    <nav class="flex overflow-x-auto space-x-2 px-4 text-sm font-medium scrollbar-hide">
-      <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Home</a>
-      <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">About</a>
-      <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Story</a>
-      <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Services</a>
-      <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Work</a>
-      <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Contact</a>
-      <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition whitespace-nowrap"> Get Quote</a>
-    </nav>
-  </div>
+            <!-- Horizontal Scrollable Links -->
+            <nav class="flex overflow-x-auto space-x-6 px-4 text-sm font-medium scrollbar-hide">
+                <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">Home</a>
+                <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">About</a>
+                <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">Story</a>
+            </nav>
+            <div class ="w-full flex justify-center items-center space-x-4 mt-2">
+                <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">Services</a>
+                <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">Work</a>
+                <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">Contact</a>
+                <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition whitespace-nowrap hover:animate-pulse-slow"> Get Quote</a>
+            </div>
+        </div>
 
-  <!-- Desktop Header (Hidden on Mobile) -->
-  <div class="hidden md:flex justify-between items-center h-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Logo with Image -->
-<div class="text-xl font-bold text-primary-600 flex items-center">
-  <img src="logo.png" alt="WebDuos Logo" class="h-14 w-14 mr-4 object-contain">
-  WebDuos
-</div>
+        <!-- Desktop Header (Hidden on Mobile) -->
+        <div class="hidden md:flex justify-between items-center h-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Logo with Image -->
+            <div class="text-xl font-bold text-primary-600 flex items-center animate-scale-in">
+                <img src="https://i.postimg.cc/MTrx7JRg/logo.png" alt="WebDuos Logo" class="h-14 w-14 mr-3 object-contain hover-grow">
+                WebDuos
+            </div>
 
-    <!-- Desktop Navigation with Increased Gap -->
-    <nav class="flex space-x-12 text-sm font-medium">
-      <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors">Home</a>
-      <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors">About</a>
-      <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors">Story</a>
-      <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors">Services</a>
-      <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors">Work</a>
-      <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors">Contact</a>
-      <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition">Get Quote</a>
-    </nav>
-  </div>
-</header>
+            <!-- Desktop Navigation with Increased Gap -->
+            <nav class="flex space-x-12 text-sm font-medium">
+                <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">Home</a>
+                <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">About</a>
+                <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">Story</a>
+                <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">Services</a>
+                <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">Work</a>
+                <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">Contact</a>
+                <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition hover:animate-pulse-slow">Get Quote</a>
+            </nav>
+        </div>
+    </header>
 
     <!-- Hero Section -->
     <section class="bg-gradient-to-br from-primary-50 to-secondary-50 py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Request Your Website</h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 animate-fade-in-up floating-element" style="--order: 1">Request Your Website</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up" style="--order: 2">
                     Tell us about your project and we'll provide you with a detailed quote and timeline. Let's bring your vision to life.
                 </p>
             </div>
@@ -124,76 +279,81 @@
     <!-- Form Section -->
     <section class="py-20 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12">
-                <div class="mb-8">
+            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 transform transition-all duration-500 hover:shadow-2xl">
+                <div class="mb-8 animate-fade-in-up" style="--order: 1">
                     <h2 class="text-3xl font-bold text-gray-900 mb-4">Project Request Form</h2>
                     <p class="text-gray-600">
                         Please fill out this form with as much detail as possible. This information helps us understand your requirements and provide an accurate quote.
                     </p>
                 </div>
                 
+                <!-- Progress Bar -->
+                <div class="progress-container animate-fade-in-up" style="--order: 1">
+                    <div class="progress-bar" id="form-progress"></div>
+                </div>
+                
                 <!-- Success Message -->
-                <div id="success-message" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
+                <div id="success-message" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6 message-entrance">
                     <div class="flex items-center">
-                        <i class="fas fa-check-circle mr-2"></i>
+                        <i class="fas fa-check-circle mr-2 animate-pulse-slow"></i>
                         <span>Thank you! Your project request has been submitted successfully. We'll get back to you within 24 hours.</span>
                     </div>
                 </div>
                 
                 <!-- Error Message -->
-                <div id="error-message" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+                <div id="error-message" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6 message-entrance">
                     <div class="flex items-center">
-                        <i class="fas fa-exclamation-circle mr-2"></i>
+                        <i class="fas fa-exclamation-circle mr-2 animate-pulse-slow"></i>
                         <span id="error-text">Please fill in all required fields correctly.</span>
                     </div>
                 </div>
                 
                 <form id="project-form" class="space-y-8">
                     <!-- Personal Information -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in-up" style="--order: 2">
                         <div>
                             <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
                             <input type="text" id="firstName" name="firstName" required
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors form-field-focus">
                             <div class="error-message text-red-600 text-sm mt-1 hidden" id="firstName-error"></div>
                         </div>
                         <div>
                             <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
                             <input type="text" id="lastName" name="lastName" required
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors form-field-focus">
                             <div class="error-message text-red-600 text-sm mt-1 hidden" id="lastName-error"></div>
                         </div>
                     </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in-up" style="--order: 3">
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
                             <input type="email" id="email" name="email" required
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors form-field-focus">
                             <div class="error-message text-red-600 text-sm mt-1 hidden" id="email-error"></div>
                         </div>
                         <div>
                             <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
                             <input type="tel" id="phone" name="phone" placeholder="+92 300 1234567" required
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors form-field-focus">
                             <div class="error-message text-red-600 text-sm mt-1 hidden" id="phone-error"></div>
                         </div>
                     </div>
                     
-                    <div>
+                    <div class="animate-fade-in-up" style="--order: 4">
                         <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company/Organization</label>
                         <input type="text" id="company" name="company"
-                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors form-field-focus">
                     </div>
                     
                     <!-- Project Details -->
-                    <div class="border-t pt-8">
+                    <div class="border-t pt-8 animate-fade-in-up" style="--order: 5">
                         <h3 class="text-xl font-semibold text-gray-900 mb-6">Project Details</h3>
                         
                         <div>
                             <label for="projectType" class="block text-sm font-medium text-gray-700 mb-2">Project Type *</label>
                             <select id="projectType" name="projectType" required
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors form-field-focus">
                                 <option value="">Select project type</option>
                                 <option value="business-website">Business Website</option>
                                 <option value="ecommerce">E-commerce Store</option>
@@ -210,69 +370,70 @@
                             <label for="projectDescription" class="block text-sm font-medium text-gray-700 mb-2">Project Description *</label>
                             <textarea id="projectDescription" name="projectDescription" rows="5" required
                                       placeholder="Please describe your project in detail. Include your goals, target audience, and any specific features you need."
-                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"></textarea>
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors form-field-focus"></textarea>
                             <div class="error-message text-red-600 text-sm mt-1 hidden" id="projectDescription-error"></div>
                         </div>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-    <div>
-        <label for="budget" class="block text-sm font-medium text-gray-700 mb-2">Budget (PKR) *</label>
-        <input type="text" id="budget" name="budget" required
-               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-               placeholder="Enter your budget amount in PKR">
-        <div class="error-message text-red-600 text-sm mt-1 hidden" id="budget-error"></div>
-    </div>
-</div>
+                            <div>
+                                <label for="budget" class="block text-sm font-medium text-gray-700 mb-2">Budget (PKR) *</label>
+                                <input type="text" id="budget" name="budget" required
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors form-field-focus"
+                                       placeholder="Enter your budget amount in PKR">
+                                <div class="error-message text-red-600 text-sm mt-1 hidden" id="budget-error"></div>
+                            </div>
+                        </div>
                     </div>
                     
-                    
-                    
                     <!-- Additional Information -->
-                    <div class="border-t pt-8">
+                    <div class="border-t pt-8 animate-fade-in-up" style="--order: 6">
                         <h3 class="text-xl font-semibold text-gray-900 mb-6">Additional Information</h3>
                         
                         <div>
                             <label for="inspiration" class="block text-sm font-medium text-gray-700 mb-2">Inspiration/Reference Websites</label>
                             <textarea id="inspiration" name="inspiration" rows="3"
                                       placeholder="Please share any websites you like or that inspire your project vision."
-                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"></textarea>
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors form-field-focus"></textarea>
                         </div>
                         
                         <div class="mt-6">
                             <label for="additionalInfo" class="block text-sm font-medium text-gray-700 mb-2">Additional Requirements</label>
                             <textarea id="additionalInfo" name="additionalInfo" rows="3"
                                       placeholder="Any other information or special requirements you'd like to share."
-                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"></textarea>
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors form-field-focus"></textarea>
                         </div>
                     </div>
                     
                     <!-- Marketing Preferences -->
-                    <div class="border-t pt-8">
+                    <div class="border-t pt-8 animate-fade-in-up" style="--order: 7">
                         <div class="flex items-start">
-                            <input type="checkbox" id="newsletter" name="newsletter" class="mt-1 mr-3 text-primary-600">
+                            <input type="checkbox" id="newsletter" name="newsletter" class="mt-1 mr-3 text-primary-600 checkbox-animate">
                             <label for="newsletter" class="text-sm text-gray-700">
                                 I would like to receive updates about WebDuos services and web development tips via email.
                             </label>
                         </div>
                         <div class="flex items-start mt-3">
-                            <input type="checkbox" id="terms" name="terms" required class="mt-1 mr-3 text-primary-600">
+                            <input type="checkbox" id="terms" name="terms" required class="mt-1 mr-3 text-primary-600 checkbox-animate">
                             <label for="terms" class="text-sm text-gray-700">
-                                I agree to the <a href="#" class="text-primary-600 hover:text-primary-700">Terms of Service</a> and <a href="#" class="text-primary-600 hover:text-primary-700">Privacy Policy</a> *
+                                I agree to the <a href="#" class="text-primary-600 hover:text-primary-700 link-underline">Terms of Service</a> and <a href="#" class="text-primary-600 hover:text-primary-700 link-underline">Privacy Policy</a> *
                             </label>
                         </div>
                         <div class="error-message text-red-600 text-sm mt-1 hidden" id="terms-error"></div>
                     </div>
                     
-<!-- Submit Button -->
-<div class="space-y-2 pt-6">
-  <button type="submit" id="submit-btn"
-          class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
-      <span id="submit-text">Submit Project Request</span>
-      <i id="submit-loading" class="fas fa-spinner fa-spin ml-2 hidden"></i>
-  </button>
-  <p id="quote-sending-text" class="text-sm text-gray-600 hidden">Your request is sending...</p>
-</div>
-                </div>
+                    <!-- Submit Button -->
+                    <div class="space-y-4 pt-6 animate-fade-in-up" style="--order: 8">
+                        <button type="submit" id="submit-btn"
+                                class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl btn-hover-animate">
+                            <span id="submit-text">Submit Project Request</span>
+                            <i id="submit-loading" class="fas fa-spinner fa-spin ml-2 hidden animate-spin-slow"></i>
+                        </button>
+                        <button type="button" id="clear-btn"
+                                class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl btn-hover-animate">
+                            <span>Clear All</span>
+                        </button>
+                        <p id="quote-sending-text" class="text-sm text-gray-600 hidden animate-pulse-slow">Your request is sending...</p>
+                    </div>
                 </form>
             </div>
         </div>
@@ -281,7 +442,7 @@
     <!-- Process Section -->
     <section class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 animate-fade-in-up">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What Happens Next?</h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                     Here's our simple process to get your project started quickly and efficiently.
@@ -289,8 +450,8 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div class="text-center transform transition-all duration-300 hover:scale-105">
+                    <div class="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-float">
                         <div class="text-primary-600 text-2xl font-bold">1</div>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">Review & Contact</h3>
@@ -299,8 +460,8 @@
                     </p>
                 </div>
                 
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div class="text-center transform transition-all duration-300 hover:scale-105 animate-delay-100">
+                    <div class="w-20 h-20 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-float" style="animation-delay: 0.2s">
                         <div class="text-secondary-600 text-2xl font-bold">2</div>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">Proposal & Quote</h3>
@@ -309,8 +470,8 @@
                     </p>
                 </div>
                 
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div class="text-center transform transition-all duration-300 hover:scale-105 animate-delay-200">
+                    <div class="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-float" style="animation-delay: 0.4s">
                         <div class="text-yellow-600 text-2xl font-bold">3</div>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">Agreement & Start</h3>
@@ -319,8 +480,8 @@
                     </p>
                 </div>
                 
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div class="text-center transform transition-all duration-300 hover:scale-105 animate-delay-300">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-float" style="animation-delay: 0.6s">
                         <div class="text-purple-600 text-2xl font-bold">4</div>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">Delivery & Launch</h3>
@@ -333,156 +494,253 @@
     </section>
 
     <!-- Footer -->
-<footer class="bg-gray-900 text-white py-16">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
-    <!-- Footer Grid: Company Info + 3 Columns -->
-    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-      
-      <!-- Company Info -->
-      <div class="space-y-4">
-        <div class="text-2xl font-bold text-primary-400">
-          <i class="fas fa-code mr-2"></i>WebDuos
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Footer Grid: Company Info + 3 Columns -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                
+                <!-- Company Info -->
+                <div class="space-y-4 animate-fade-in-left">
+                    <div class="text-2xl font-bold text-primary-400">
+                        <i class="fas fa-code mr-2"></i>WebDuos
+                    </div>
+                    <p class="text-gray-300">
+                        Pakistan's premier web development agency, crafting digital excellence since 2019.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors transform hover:scale-125">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors transform hover:scale-125">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors transform hover:scale-125">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors transform hover:scale-125">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links / Services / Contact Info in 3 columns always -->
+                <div class="col-span-1 lg:col-span-3 w-full animate-fade-in-right">
+                    <div class="grid grid-cols-3 gap-4">
+
+                        <!-- Quick Links -->
+                        <div>
+                            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                            <ul class="space-y-2 text-sm">
+                                <li><a href="index.html" class="text-gray-300 hover:text-primary-400 transition-colors link-underline">Home</a></li>
+                                <li><a href="about.html" class="text-gray-300 hover:text-primary-400 transition-colors link-underline">About Us</a></li>
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors link-underline">Services</a></li>
+                                <li><a href="portfolio.html" class="text-gray-300 hover:text-primary-400 transition-colors link-underline">Portfolio</a></li>
+                                <li><a href="contact.html" class="text-gray-300 hover:text-primary-400 transition-colors link-underline">Contact</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Services -->
+                        <div>
+                            <h3 class="text-lg font-semibold mb-4">Services</h3>
+                            <ul class="space-y-2 text-sm">
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors link-underline">Web Development</a></li>
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors link-underline">UI/UX Design</a></li>
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors link-underline">Additional Services</a></li>
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors link-underline">E-commerce</a></li>
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors link-underline">Maintenance</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Contact Info -->
+                        <div>
+                            <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                            <ul class="space-y-2 text-sm text-gray-300">
+                                <li class="flex items-start"><i class="fas fa-phone mr-2 mt-1 animate-pulse-slow"></i>+92 300 1234567</li>
+                                <li class="flex items-start"><i class="fas fa-envelope mr-2 mt-1 animate-pulse-slow"></i>webduos007<br>@gmail.com</li>
+                                <li class="flex items-start"><i class="fas fa-map-marker-alt mr-2 mt-1 animate-pulse-slow"></i>Karachi, Pakistan</li>
+                                <li class="flex items-start"><i class="fas fa-clock mr-2 mt-1 animate-pulse-slow"></i>Mon-Fri 9AM–6PM PKT</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <hr class="border-gray-700 my-8">
+
+            <!-- Bottom Footer -->
+            <div class="flex flex-col md:flex-row justify-between items-center animate-fade-in-up">
+                <p class="text-gray-400">© 2024 WebDuos. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors link-underline">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors link-underline">Terms of Service</a>
+                </div>
+            </div>
         </div>
-        <p class="text-gray-300">
-          Pakistan's premier web development agency, crafting digital excellence since 2019.
-        </p>
-        <div class="flex space-x-4">
-          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Quick Links / Services / Contact Info in 3 columns always -->
-      <div class="col-span-1 lg:col-span-3 w-full">
-        <div class="grid grid-cols-3 gap-4">
-
-          <!-- Quick Links -->
-          <div>
-            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul class="space-y-2 text-sm">
-              <li><a href="index.html" class="text-gray-300 hover:text-primary-400 transition-colors">Home</a></li>
-              <li><a href="about.html" class="text-gray-300 hover:text-primary-400 transition-colors">About Us</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Services</a></li>
-              <li><a href="portfolio.html" class="text-gray-300 hover:text-primary-400 transition-colors">Portfolio</a></li>
-              <li><a href="contact.html" class="text-gray-300 hover:text-primary-400 transition-colors">Contact</a></li>
-            </ul>
-          </div>
-
-          <!-- Services -->
-          <div>
-            <h3 class="text-lg font-semibold mb-4">Services</h3>
-            <ul class="space-y-2 text-sm">
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Web Development</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">UI/UX Design</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Additional Services</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">E-commerce</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Maintenance</a></li>
-            </ul>
-          </div>
-
-          <!-- Contact Info -->
-          <div>
-            <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
-            <ul class="space-y-2 text-sm text-gray-300">
-              <li class="flex items-start"><i class="fas fa-phone mr-2 mt-1"></i>+92 300 1234567</li>
-              <li class="flex items-start"><i class="fas fa-envelope mr-2 mt-1"></i>webduos007<br>@gmail.com</li>
-              <li class="flex items-start"><i class="fas fa-map-marker-alt mr-2 mt-1"></i>Karachi, Pakistan</li>
-              <li class="flex items-start"><i class="fas fa-clock mr-2 mt-1"></i>Mon-Fri 9AM–6PM PKT</li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- Divider -->
-    <hr class="border-gray-700 my-8">
-
-    <!-- Bottom Footer -->
-    <div class="flex flex-col md:flex-row justify-between items-center">
-      <p class="text-gray-400">© 2024 WebDuos. All rights reserved.</p>
-      <div class="flex space-x-6 mt-4 md:mt-0">
-        <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">Privacy Policy</a>
-        <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">Terms of Service</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-    <script src="form-handler.js"></script>
-    <script src="forms.js"></script>
+    </footer>
     <script src="main.js"></script>
+    <script src="forms.js"></script>
     <script src="portfolio.js"></script>
-<script>
-document.getElementById('project-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
+    <script src="form-handler.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('project-form');
+        const clearBtn = document.getElementById('clear-btn');
+        const progressBar = document.getElementById('form-progress');
+        const formFields = form.querySelectorAll('input, textarea, select');
+        const requiredFields = form.querySelectorAll('[required]');
+        
+        // Calculate form completion percentage
+        function updateProgressBar() {
+            let filledFields = 0;
+            requiredFields.forEach(field => {
+                if (field.type === 'checkbox') {
+                    if (field.checked) filledFields++;
+                } else if (field.value.trim() !== '') {
+                    filledFields++;
+                }
+            });
+            
+            const percentage = (filledFields / requiredFields.length) * 100;
+            progressBar.style.width = `${percentage}%`;
+            
+            // Change color based on completion
+            if (percentage < 30) {
+                progressBar.style.background = '#ef4444'; // red
+            } else if (percentage < 70) {
+                progressBar.style.background = '#f59e0b'; // amber
+            } else {
+                progressBar.style.background = '#10b981'; // emerald
+            }
+        }
+        
+        // Add event listeners to all form fields
+        formFields.forEach(field => {
+            field.addEventListener('input', updateProgressBar);
+            if (field.type === 'checkbox') {
+                field.addEventListener('change', updateProgressBar);
+            }
+        });
+        
+        // Clear form button functionality
+        clearBtn.addEventListener('click', function() {
+            // Reset the form
+            form.reset();
+            
+            // Reset progress bar
+            progressBar.style.width = '0%';
+            progressBar.style.background = '#3b82f6';
+            
+            // Hide any visible messages
+            document.getElementById('success-message').classList.add('hidden');
+            document.getElementById('error-message').classList.add('hidden');
+            
+            // Clear any error messages
+            document.querySelectorAll('.error-message').forEach(el => {
+                el.classList.add('hidden');
+                el.textContent = '';
+            });
+            
+            // Add visual feedback
+            this.classList.add('animate-pulse-slow');
+            setTimeout(() => {
+                this.classList.remove('animate-pulse-slow');
+            }, 500);
+        });
+        
+        // Form submission handler
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
 
-    const data = {
-        firstName: document.getElementById('firstName').value.trim(),
-        lastName: document.getElementById('lastName').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        phone: document.getElementById('phone').value.trim(),
-        company: document.getElementById('company').value.trim(),
-        projectType: document.getElementById('projectType').value.trim(),
-        projectDescription: document.getElementById('projectDescription').value.trim(),
-        budget: document.getElementById('budget').value.trim(),
-        inspiration: document.getElementById('inspiration').value.trim(),
-        additionalInfo: document.getElementById('additionalInfo').value.trim()
-    };
+            const data = {
+                firstName: document.getElementById('firstName').value.trim(),
+                lastName: document.getElementById('lastName').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                company: document.getElementById('company').value.trim(),
+                projectType: document.getElementById('projectType').value.trim(),
+                projectDescription: document.getElementById('projectDescription').value.trim(),
+                budget: document.getElementById('budget').value.trim(),
+                inspiration: document.getElementById('inspiration').value.trim(),
+                additionalInfo: document.getElementById('additionalInfo').value.trim()
+            };
 
-    const submitBtn = document.getElementById('submit-btn');
-    const loadingIcon = document.getElementById('submit-loading');
-    const sendingText = document.getElementById('quote-sending-text');
-    const successMessage = document.getElementById('success-message');
-    const errorMessage = document.getElementById('error-message');
+            const submitBtn = document.getElementById('submit-btn');
+            const loadingIcon = document.getElementById('submit-loading');
+            const sendingText = document.getElementById('quote-sending-text');
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
 
-    submitBtn.disabled = true;
-    loadingIcon.classList.remove('hidden');
-    sendingText.classList.remove('hidden');
+            submitBtn.disabled = true;
+            loadingIcon.classList.remove('hidden');
+            sendingText.classList.remove('hidden');
+            
+            // Add animation class during submission
+            submitBtn.classList.add('animate-pulse-slow');
 
-    try {
-        const response = await fetch('/submit_quote', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
+            try {
+                const response = await fetch('/submit_quote', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                loadingIcon.classList.add('hidden');
+                sendingText.classList.add('hidden');
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('animate-pulse-slow');
+
+                if (response.ok) {
+                    successMessage.classList.remove('hidden');
+                    errorMessage.classList.add('hidden');
+                    
+                    // Add celebration animation
+                    successMessage.classList.add('animate-bounce-slow');
+                    setTimeout(() => {
+                        successMessage.classList.remove('animate-bounce-slow');
+                    }, 2000);
+                } else {
+                    const result = await response.json();
+                    errorMessage.classList.remove('hidden');
+                    document.getElementById('error-text').textContent = result.message || "Something went wrong.";
+                    
+                    // Add shake animation for error
+                    errorMessage.classList.add('animate-wiggle');
+                    setTimeout(() => {
+                        errorMessage.classList.remove('animate-wiggle');
+                    }, 500);
+                }
+            } catch (error) {
+                loadingIcon.classList.add('hidden');
+                sendingText.classList.add('hidden');
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('animate-pulse-slow');
+                errorMessage.classList.remove('hidden');
+                document.getElementById('error-text').textContent = error.message || "Something went wrong.";
+                
+                // Add shake animation for error
+                errorMessage.classList.add('animate-wiggle');
+                setTimeout(() => {
+                    errorMessage.classList.remove('animate-wiggle');
+                }, 500);
+            }
         });
 
-        loadingIcon.classList.add('hidden');
-        sendingText.classList.add('hidden');
-        submitBtn.disabled = false;
-
-        if (response.ok) {
-            successMessage.classList.remove('hidden');
-            errorMessage.classList.add('hidden');
-            document.getElementById('project-form').reset();
-        } else {
-            const result = await response.json();
-            errorMessage.classList.remove('hidden');
-            document.getElementById('error-text').textContent = result.message || "Something went wrong.";
-        }
-    } catch (error) {
-        loadingIcon.classList.add('hidden');
-        sendingText.classList.add('hidden');
-        submitBtn.disabled = false;
-        errorMessage.classList.remove('hidden');
-        document.getElementById('error-text').textContent = error.message || "Something went wrong.";
-    }
-});
-</script>
-
-
+        // Add animation to form fields when focused
+        document.querySelectorAll('input, textarea, select').forEach(element => {
+            element.addEventListener('focus', function() {
+                this.classList.add('ring-2', 'ring-primary-500');
+            });
+            
+            element.addEventListener('blur', function() {
+                this.classList.remove('ring-2', 'ring-primary-500');
+            });
+        });
+    });
+    </script>
 </body>
 </html>

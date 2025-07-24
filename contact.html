@@ -42,6 +42,61 @@
                             800: '#1f2937',
                             900: '#111827'
                         }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'fade-in-down': 'fadeInDown 0.8s ease-out forwards',
+                        'fade-in-left': 'fadeInLeft 0.8s ease-out forwards',
+                        'fade-in-right': 'fadeInRight 0.8s ease-out forwards',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounceSlow 2s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'wave': 'wave 2s linear infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        fadeInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        pulse: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '.8' }
+                        },
+                        bounceSlow: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-8px)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        wave: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '10%': { transform: 'rotate(14deg)' },
+                            '20%': { transform: 'rotate(-8deg)' },
+                            '30%': { transform: 'rotate(14deg)' },
+                            '40%': { transform: 'rotate(-4deg)' },
+                            '50%': { transform: 'rotate(10deg)' },
+                            '60%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(0deg)' }
+                        }
                     }
                 }
             }
@@ -64,58 +119,158 @@
         from { opacity: 1; }
         to { opacity: 0; }
     }
+
+    /* Animation delay classes */
+    .animate-delay-100 { animation-delay: 100ms; }
+    .animate-delay-200 { animation-delay: 200ms; }
+    .animate-delay-300 { animation-delay: 300ms; }
+    .animate-delay-400 { animation-delay: 400ms; }
+    .animate-delay-500 { animation-delay: 500ms; }
+    .animate-delay-600 { animation-delay: 600ms; }
+    .animate-delay-700 { animation-delay: 700ms; }
+    .animate-delay-800 { animation-delay: 800ms; }
+
+    /* Form field focus animation */
+    .form-field-focus {
+        transition: all 0.3s ease;
+    }
+    .form-field-focus:focus {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.3);
+    }
+
+    /* Social icon hover animation */
+    .social-icon {
+        transition: all 0.3s ease;
+        transform: translateY(0);
+    }
+    .social-icon:hover {
+        transform: translateY(-5px) scale(1.1);
+    }
+
+    /* FAQ item hover animation */
+    .faq-item {
+        transition: all 0.3s ease;
+    }
+    .faq-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Button ripple effect */
+    .btn-ripple {
+        position: relative;
+        overflow: hidden;
+    }
+    .btn-ripple:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 5px;
+        height: 5px;
+        background: rgba(255, 255, 255, 0.5);
+        opacity: 0;
+        border-radius: 100%;
+        transform: scale(1, 1) translate(-50%);
+        transform-origin: 50% 50%;
+    }
+    .btn-ripple:focus:not(:active)::after {
+        animation: ripple 1s ease-out;
+    }
+
+    /* Contact card hover animation */
+    .contact-card {
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Success/error message animation */
+    .message-animate {
+        animation: slideDown 0.5s ease-out forwards;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Nav link hover animation */
+    .nav-link {
+        position: relative;
+    }
+    .nav-link:after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: currentColor;
+        transition: width 0.3s ease;
+    }
+    .nav-link:hover:after {
+        width: 100%;
+    }
 </style>
 </head>
 <body class="bg-white text-gray-900">
-<header class="bg-white shadow-md sticky top-0 z-50">
-
-  <!-- Mobile Header (Logo Centered, Links in One Line) -->
+    <!-- Header -->
+<header class="bg-white shadow-md sticky top-0 z-50 animate-fade-in">
+  <!-- Mobile Header -->
   <div class="md:hidden flex flex-col items-center py-3 space-y-2">
-    <!-- Logo Centered -->
-    <div class="text-xl font-bold text-primary-600">
-      <i class="fas fa-code mr-1"></i>WebDuos
+    <div class="text-xl font-bold text-primary-600 animate-slide-left">
+      <i class="fas fa-code mr-1 animate-rotate"></i>WebDuos
     </div>
-
-    <!-- Horizontal Scrollable Links -->
-    <nav class="flex overflow-x-auto space-x-2 px-4 text-sm font-medium scrollbar-hide">
-      <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Home</a>
-      <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">About</a>
-      <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Story</a>
-      <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Services</a>
-      <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Work</a>
-      <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Contact</a>
-      <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition whitespace-nowrap"> Get Quote</a>
-    </nav>
+    <!-- Links with staggered animations -->
+    <div class="flex flex-col items-center space-y-2 w-full px-2">
+      <div class="flex justify-center space-x-4 w-full">
+        <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium animate-fade-up animate-delay-100">Home</a>
+        <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium animate-fade-up animate-delay-200">About</a>
+        <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium animate-fade-up animate-delay-300">Story</a>
+      </div>
+      <div class="flex justify-center space-x-4 w-full">
+        <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium animate-fade-up animate-delay-400">Services</a>
+        <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium animate-fade-up animate-delay-500">Work</a>
+        <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium animate-fade-up animate-delay-600">Contact</a>
+        <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition whitespace-nowrap text-sm font-medium animate-pulse-glow">Get Quote</a>
+      </div>
+    </div>
   </div>
 
-  <!-- Desktop Header (Hidden on Mobile) -->
+  <!-- Desktop Header -->
   <div class="hidden md:flex justify-between items-center h-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Logo with Image -->
-<div class="text-xl font-bold text-primary-600 flex items-center">
-  <img src="logo.png" alt="WebDuos Logo" class="h-14 w-14 mr-3 object-contain">
-  WebDuos
-</div>
-
-    <!-- Desktop Navigation with Increased Gap -->
+    <div class="text-xl font-bold text-primary-600 flex items-center animate-slide-left">
+      <img src="https://i.postimg.cc/MTrx7JRg/logo.png" alt="WebDuos Logo" class="h-14 w-14 mr-3 object-contain hover-grow">
+      WebDuos
+    </div>
     <nav class="flex space-x-12 text-sm font-medium">
-      <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors">Home</a>
-      <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors">About</a>
-      <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors">Story</a>
-      <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors">Services</a>
-      <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors">Work</a>
-      <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors">Contact</a>
-      <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition">Get Quote</a>
+      <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors link-underline animate-fade-up animate-delay-100">Home</a>
+      <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors link-underline animate-fade-up animate-delay-200">About</a>
+      <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors link-underline animate-fade-up animate-delay-300">Story</a>
+      <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors link-underline animate-fade-up animate-delay-400">Services</a>
+      <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors link-underline animate-fade-up animate-delay-500">Work</a>
+      <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors link-underline animate-fade-up animate-delay-600">Contact</a>
+      <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition hover-grow animate-pulse-glow">Get Quote</a>
     </nav>
   </div>
 </header>
 
-
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-primary-50 to-secondary-50 py-20">
+    <section class="bg-gradient-to-br from-primary-50 to-secondary-50 py-20 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Contact Us</h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 animate-fade-in-up animate-pulse-slow">Contact Us</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up animate-delay-200">
                     Ready to start your web development project? We're here to help bring your vision to life. Get in touch with our team today.
                 </p>
             </div>
@@ -127,16 +282,16 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <!-- Contact Information -->
-                <div>
-                    <h2 class="text-3xl font-bold text-gray-900 mb-8">Get in Touch</h2>
-                    <p class="text-lg text-gray-600 mb-8">
+                <div class="animate-fade-in-left">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-8 animate-fade-in-left animate-delay-100">Get in Touch</h2>
+                    <p class="text-lg text-gray-600 mb-8 animate-fade-in-left animate-delay-200">
                         We're always excited to discuss new projects and opportunities. Whether you need a simple website or a complex web application, our team is ready to help.
                     </p>
                     
                     <!-- Contact Details -->
                     <div class="space-y-6 mb-8">
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                        <div class="flex items-start contact-card animate-fade-in-left animate-delay-300">
+                            <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 animate-bounce-slow">
                                 <i class="fas fa-phone text-primary-600 text-xl"></i>
                             </div>
                             <div>
@@ -147,8 +302,8 @@
                             </div>
                         </div>
                         
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 bg-secondary-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                        <div class="flex items-start contact-card animate-fade-in-left animate-delay-400">
+                            <div class="w-12 h-12 bg-secondary-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 animate-bounce-slow">
                                 <i class="fas fa-envelope text-secondary-600 text-xl"></i>
                             </div>
                             <div>
@@ -158,9 +313,8 @@
                             </div>
                         </div>
                         
-                        
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                        <div class="flex items-start contact-card animate-fade-in-left animate-delay-500">
+                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 animate-bounce-slow">
                                 <i class="fas fa-clock text-purple-600 text-xl"></i>
                             </div>
                             <div>
@@ -174,104 +328,99 @@
                     </div>
                     
                     <!-- Social Media -->
-                    <div>
+                    <div class="animate-fade-in-left animate-delay-600">
                         <h3 class="text-lg font-semibold text-gray-900 mb-4">Follow Us</h3>
                         <div class="flex space-x-4">
-                            <a href="https://web.facebook.com/profile.php?id=61577790401985" class="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+                            <a href="https://web.facebook.com/profile.php?id=61577790401985" class="social-icon w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                             
-                            <a href="https://www.instagram.com/web_duos/" class="w-12 h-12 bg-pink-500 text-white rounded-lg flex items-center justify-center hover:bg-pink-600 transition-colors">
+                            <a href="https://www.instagram.com/web_duos/" class="social-icon w-12 h-12 bg-pink-500 text-white rounded-lg flex items-center justify-center hover:bg-pink-600 transition-colors">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="https://wa.me/923044739117" class="w-12 h-12 bg-green-600 text-white rounded-lg flex items-center justify-center hover:bg-green-700 transition-colors">
-    <i class="fab fa-whatsapp"></i>
-</a>
+                            <a href="https://wa.me/923044739117" class="social-icon w-12 h-12 bg-green-600 text-white rounded-lg flex items-center justify-center hover:bg-green-700 transition-colors">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
 
-                           <a href="https://www.fiverr.com/adan_maaz_2025?public_mode=true" target="_blank" class="w-12 h-12 bg-[#1dbf73] text-white rounded-lg flex items-center justify-center hover:bg-[#19a463] transition-colors font-bold text-lg">
-    Fi
-</a>
+                            <a href="https://www.fiverr.com/adan_maaz_2025?public_mode=true" target="_blank" class="social-icon w-12 h-12 bg-[#1dbf73] text-white rounded-lg flex items-center justify-center hover:bg-[#19a463] transition-colors font-bold text-lg">
+                                Fi
+                            </a>
 
-
-<a href="https://www.upwork.com/freelancers/~01c748e11468a3070b?mp_source=share" target="_blank" class="w-12 h-12 bg-black text-white rounded-lg flex items-center justify-center hover:bg-gray-800 transition-colors font-bold text-lg">
-    Up
-</a>
-
-
-
-
+                            <a href="https://www.upwork.com/freelancers/~01c748e11468a3070b?mp_source=share" target="_blank" class="social-icon w-12 h-12 bg-black text-white rounded-lg flex items-center justify-center hover:bg-gray-800 transition-colors font-bold text-lg">
+                                Up
+                            </a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Contact Form -->
-                <div class="bg-gray-50 p-8 rounded-2xl">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h3>
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-lg animate-fade-in-right">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 animate-fade-in-right animate-delay-100">Send us a Message</h3>
                     
                     <!-- Success Message -->
-                    <div id="contact-success" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
+                    <div id="contact-success" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6 message-animate">
                         <div class="flex items-center">
-                            <i class="fas fa-check-circle mr-2"></i>
+                            <i class="fas fa-check-circle mr-2 animate-spin"></i>
                             <span>Thank you! Your message has been sent successfully. We'll get back to you soon.</span>
                         </div>
                     </div>
                     
                     <!-- Error Message -->
-                    <div id="contact-error" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+                    <div id="contact-error" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6 message-animate">
                         <div class="flex items-center">
-                            <i class="fas fa-exclamation-circle mr-2"></i>
+                            <i class="fas fa-exclamation-circle mr-2 animate-pulse"></i>
                             <span id="contact-error-text">Please fill in all required fields correctly.</span>
                         </div>
                     </div>
                     
                     <form id="contact-form" class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
+                            <div class="animate-fade-in-right animate-delay-200">
                                 <label for="contactFirstName" class="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
                                 <input type="text" id="contactFirstName" name="firstName" required
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
+                                       class="form-field-focus w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-300">
                                 <div class="error-message text-red-600 text-sm mt-1 hidden" id="contactFirstName-error"></div>
                             </div>
-                            <div>
+                            <div class="animate-fade-in-right animate-delay-300">
                                 <label for="contactLastName" class="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
                                 <input type="text" id="contactLastName" name="lastName" required
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
+                                       class="form-field-focus w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-300">
                                 <div class="error-message text-red-600 text-sm mt-1 hidden" id="contactLastName-error"></div>
                             </div>
                         </div>
                         
-                        <div>
+                        <div class="animate-fade-in-right animate-delay-400">
                             <label for="contactEmail" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
                             <input type="email" id="contactEmail" name="email" required
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
+                                   class="form-field-focus w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-300">
                             <div class="error-message text-red-600 text-sm mt-1 hidden" id="contactEmail-error"></div>
                         </div>
                         
-                        <div>
+                        <div class="animate-fade-in-right animate-delay-500">
                             <label for="contactPhone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
                             <input type="tel" id="contactPhone" name="phone" placeholder="+92 300 1234567"
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
+                                   class="form-field-focus w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-300">
                         </div>
                         
-                        <div>
+                        <div class="animate-fade-in-right animate-delay-600">
                             <label for="contactSubject" class="block text-sm font-medium text-gray-700 mb-2">Subject *</label>
                             <input type="text" id="contactSubject" name="subject" required
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
+                                   class="form-field-focus w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-300">
                             <div class="error-message text-red-600 text-sm mt-1 hidden" id="contactSubject-error"></div>
                         </div>
                         
-                        <div>
+                        <div class="animate-fade-in-right animate-delay-700">
                             <label for="contactMessage" class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
                             <textarea id="contactMessage" name="message" rows="5" required
                                       placeholder="Tell us about your project or inquiry..."
-                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"></textarea>
+                                      class="form-field-focus w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-300"></textarea>
                             <div class="error-message text-red-600 text-sm mt-1 hidden" id="contactMessage-error"></div>
                         </div>
                         
-                        <div>
+                        <div class="animate-fade-in-right animate-delay-800">
                             <label for="contactType" class="block text-sm font-medium text-gray-700 mb-2">Inquiry Type</label>
                             <select id="contactType" name="inquiryType"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
+                                    class="form-field-focus w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-300">
                                 <option value="">Select inquiry type</option>
                                 <option value="new-project">New Project</option>
                                 <option value="consultation">Free Consultation</option>
@@ -281,18 +430,15 @@
                             </select>
                         </div>
 
-                        
-                        
-<!-- Submit Button -->
-<div class="space-y-2">
-  <button type="submit" id="contact-submit-btn"
-          class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">
-      <span id="contact-submit-text">Send Message</span>
-      <i id="contact-submit-loading" class="fas fa-spinner fa-spin ml-2 hidden"></i>
-  </button>
-  <p id="contact-sending-text" class="text-sm text-gray-600 hidden">Your message is sending...</p>
-</div>
-
+                        <!-- Submit Button -->
+                        <div class="space-y-2 animate-fade-in-right animate-delay-900">
+                            <button type="submit" id="contact-submit-btn"
+                                    class="btn-ripple w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">
+                                <span id="contact-submit-text">Send Message</span>
+                                <i id="contact-submit-loading" class="fas fa-spinner fa-spin ml-2 hidden"></i>
+                            </button>
+                            <p id="contact-sending-text" class="text-sm text-gray-600 hidden animate-pulse-slow">Your message is sending...</p>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -302,15 +448,15 @@
     <!-- FAQ Section -->
     <section class="py-20 bg-gray-50">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 animate-fade-in-up">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up animate-delay-200">
                     Quick answers to common questions about our services and process.
                 </p>
             </div>
             
             <div class="space-y-6">
-                <div class="faq-item bg-white rounded-lg shadow-md">
+                <div class="faq-item bg-white rounded-lg shadow-md animate-fade-in-up animate-delay-300">
                     <button class="faq-question w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
                         <div class="flex justify-between items-center">
                             <h3 class="text-lg font-semibold text-gray-900">How long does it take to build a website?</h3>
@@ -324,7 +470,7 @@
                     </div>
                 </div>
                 
-                <div class="faq-item bg-white rounded-lg shadow-md">
+                <div class="faq-item bg-white rounded-lg shadow-md animate-fade-in-up animate-delay-400">
                     <button class="faq-question w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
                         <div class="flex justify-between items-center">
                             <h3 class="text-lg font-semibold text-gray-900">What is included in your web development packages?</h3>
@@ -338,7 +484,7 @@
                     </div>
                 </div>
                 
-                <div class="faq-item bg-white rounded-lg shadow-md">
+                <div class="faq-item bg-white rounded-lg shadow-md animate-fade-in-up animate-delay-500">
                     <button class="faq-question w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
                         <div class="flex justify-between items-center">
                             <h3 class="text-lg font-semibold text-gray-900">Do you provide ongoing maintenance and support?</h3>
@@ -352,7 +498,7 @@
                     </div>
                 </div>
                 
-                <div class="faq-item bg-white rounded-lg shadow-md">
+                <div class="faq-item bg-white rounded-lg shadow-md animate-fade-in-up animate-delay-600">
                     <button class="faq-question w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
                         <div class="flex justify-between items-center">
                             <h3 class="text-lg font-semibold text-gray-900">Can you help with e-commerce website development?</h3>
@@ -366,7 +512,7 @@
                     </div>
                 </div>
                 
-                <div class="faq-item bg-white rounded-lg shadow-md">
+                <div class="faq-item bg-white rounded-lg shadow-md animate-fade-in-up animate-delay-700">
                     <button class="faq-question w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
                         <div class="flex justify-between items-center">
                             <h3 class="text-lg font-semibold text-gray-900">What are your payment terms?</h3>
@@ -384,17 +530,17 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 bg-primary-600">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section class="py-20 bg-primary-600 floating-cta">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in-up">
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Get Started?</h2>
-            <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+            <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto animate-fade-in-up animate-delay-200">
                 Don't wait any longer. Contact us today and let's discuss how we can help transform your business with a powerful web presence.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="request.html" class="bg-white text-primary-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animate-delay-300">
+                <a href="request.html" class="bg-white text-primary-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
                     Request Quote
                 </a>
-                <a href="tel:+923001234567" class="border-2 border-white text-white hover:bg-white hover:text-primary-600 px-8 py-3 rounded-lg font-semibold transition-colors">
+                <a href="tel:+923001234567" class="border-2 border-white text-white hover:bg-white hover:text-primary-600 px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
                     Call Now
                 </a>
             </div>
@@ -402,63 +548,57 @@
     </section>
 
     <!-- Footer -->
-<footer class="bg-gray-900 text-white py-16">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
-    <!-- Footer Grid: Company Info + 3 Columns -->
-    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-      
-      <!-- Company Info -->
-      <div class="space-y-4">
-        <div class="text-2xl font-bold text-primary-400">
-          <i class="fas fa-code mr-2"></i>WebDuos
-        </div>
-        <p class="text-gray-300">
-          Pakistan's premier web development agency, crafting digital excellence since 2019.
-        </p>
-        <div class="flex space-x-4">
-          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </div>
-      </div>
+    <footer class="bg-gray-900 text-white py-16 animate-fade-in-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Footer Grid: Company Info + 3 Columns -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                
+                <!-- Company Info -->
+                <div class="space-y-4 animate-fade-in-left">
+                    <div class="text-2xl font-bold text-primary-400">
+                        <i class="fas fa-code mr-2"></i>WebDuos
+                    </div>
+                    <p class="text-gray-300">
+                        Pakistan's premier web development agency, crafting digital excellence since 2019.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://web.facebook.com/profile.php?id=61577790401985" class="text-gray-400 hover:text-primary-400 transition-all duration-300 transform hover:scale-125">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/web_duos/" class="text-gray-400 hover:text-primary-400 transition-all duration-300 transform hover:scale-125">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
 
-      <!-- Quick Links / Services / Contact Info in 3 columns always -->
-      <div class="col-span-1 lg:col-span-3 w-full">
-        <div class="grid grid-cols-3 gap-4">
+                <!-- Quick Links / Services / Contact Info in 3 columns always -->
+                <div class="col-span-1 lg:col-span-3 w-full animate-fade-in-right">
+                    <div class="grid grid-cols-3 gap-4">
 
-          <!-- Quick Links -->
-          <div>
-            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul class="space-y-2 text-sm">
-              <li><a href="index.html" class="text-gray-300 hover:text-primary-400 transition-colors">Home</a></li>
-              <li><a href="about.html" class="text-gray-300 hover:text-primary-400 transition-colors">About Us</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Services</a></li>
-              <li><a href="portfolio.html" class="text-gray-300 hover:text-primary-400 transition-colors">Portfolio</a></li>
-              <li><a href="contact.html" class="text-gray-300 hover:text-primary-400 transition-colors">Contact</a></li>
-            </ul>
-          </div>
+                        <!-- Quick Links -->
+                        <div>
+                            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                            <ul class="space-y-2 text-sm">
+                                <li><a href="index.html" class="text-gray-300 hover:text-primary-400 transition-all duration-300">Home</a></li>
+                                <li><a href="about.html" class="text-gray-300 hover:text-primary-400 transition-all duration-300">About Us</a></li>
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-all duration-300">Services</a></li>
+                                <li><a href="portfolio.html" class="text-gray-300 hover:text-primary-400 transition-all duration-300">Portfolio</a></li>
+                                <li><a href="contact.html" class="text-gray-300 hover:text-primary-400 transition-all duration-300">Contact</a></li>
+                            </ul>
+                        </div>
 
-          <!-- Services -->
-          <div>
-            <h3 class="text-lg font-semibold mb-4">Services</h3>
-            <ul class="space-y-2 text-sm">
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Web Development</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">UI/UX Design</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Additional Services</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">E-commerce</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Maintenance</a></li>
-            </ul>
-          </div>
+                        <!-- Services -->
+                        <div>
+                            <h3 class="text-lg font-semibold mb-4">Services</h3>
+                            <ul class="space-y-2 text-sm">
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-all duration-300">Web Development</a></li>
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-all duration-300">UI/UX Design</a></li>
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-all duration-300">Additional Services</a></li>
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-all duration-300">E-commerce</a></li>
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-all duration-300">Maintenance</a></li>
+                            </ul>
+                        </div>
 
           <!-- Contact Info -->
           <div>

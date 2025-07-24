@@ -42,6 +42,58 @@
                             800: '#1f2937',
                             900: '#111827'
                         }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'fade-in-left': 'fadeInLeft 0.8s ease-out forwards',
+                        'fade-in-right': 'fadeInRight 0.8s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'wave': 'wave 2s linear infinite',
+                        'rotate': 'rotate 8s linear infinite',
+                        'bounce': 'bounce 1s infinite'
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        fadeInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        wave: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '10%': { transform: 'rotate(14deg)' },
+                            '20%': { transform: 'rotate(-8deg)' },
+                            '30%': { transform: 'rotate(14deg)' },
+                            '40%': { transform: 'rotate(-4deg)' },
+                            '50%': { transform: 'rotate(10deg)' },
+                            '60%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(0deg)' }
+                        },
+                        rotate: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' }
+                        },
+                        bounce: {
+                            '0%, 100%': { 
+                                transform: 'translateY(-25%)',
+                                'animation-timing-function': 'cubic-bezier(0.8,0,1,1)'
+                            },
+                            '50%': {
+                                transform: 'none',
+                                'animation-timing-function': 'cubic-bezier(0,0,0.2,1)'
+                            }
+                        }
                     }
                 }
             }
@@ -52,7 +104,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <!-- Add this to all HTML files in the head section -->
 <style>
     /* Temporary styles for page transitions */
@@ -64,70 +116,107 @@
         from { opacity: 1; }
         to { opacity: 0; }
     }
+
+    /* Additional animation styles */
+    .animate-delay-100 {
+        animation-delay: 100ms;
+    }
+    .animate-delay-200 {
+        animation-delay: 200ms;
+    }
+    .animate-delay-300 {
+        animation-delay: 300ms;
+    }
+    .animate-delay-400 {
+        animation-delay: 400ms;
+    }
+    .animate-delay-500 {
+        animation-delay: 500ms;
+    }
+    .animate-duration-2s {
+        animation-duration: 2s;
+    }
+    .animate-duration-3s {
+        animation-duration: 3s;
+    }
+    .hover-rotate:hover {
+        transform: rotate(5deg);
+    }
+    .hover-grow:hover {
+        transform: scale(1.05);
+    }
+    .transition-transform {
+        transition: transform 0.3s ease;
+    }
 </style>
 </head>
 <body class="bg-white text-gray-900">
-<header class="bg-white shadow-md sticky top-0 z-50">
 
-  <!-- Mobile Header (Logo Centered, Links in One Line) -->
-  <div class="md:hidden flex flex-col items-center py-3 space-y-2">
-    <!-- Logo Centered -->
-    <div class="text-xl font-bold text-primary-600">
-      <i class="fas fa-code mr-1"></i>WebDuos
-    </div>
+    <header class="bg-white shadow-md sticky top-0 z-50 animate-slide-down">
+        <!-- Mobile Header (Logo Centered, Links in One Line) -->
+        <div class="md:hidden flex flex-col items-center py-3 space-y-2">
+            <!-- Logo Centered -->
+            <div class="text-xl font-bold text-primary-600 animate-scale-in">
+                <i class="fas fa-code mr-1"></i>WebDuos
+            </div>
 
-    <!-- Horizontal Scrollable Links -->
-    <nav class="flex overflow-x-auto space-x-2 px-4 text-sm font-medium scrollbar-hide">
-      <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Home</a>
-      <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">About</a>
-      <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Story</a>
-      <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Services</a>
-      <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Work</a>
-      <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Contact</a>
-      <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition whitespace-nowrap"> Get Quote</a>
-    </nav>
-  </div>
+            <!-- Horizontal Scrollable Links -->
+            <nav class="flex overflow-x-auto space-x-6 px-4 text-sm font-medium scrollbar-hide">
+                <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">Home</a>
+                <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">About</a>
+                <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">Story</a>
+            </nav>
+            <div class ="w-full flex justify-center items-center space-x-4 mt-2">
+                <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">Services</a>
+                <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">Work</a>
+                <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">Contact</a>
+                <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition whitespace-nowrap hover:animate-pulse-slow"> Get Quote</a>
+            </div>
+        </div>
 
-  <!-- Desktop Header (Hidden on Mobile) -->
-  <div class="hidden md:flex justify-between items-center h-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Logo with Image -->
-<div class="text-xl font-bold text-primary-600 flex items-center">
-  <img src="logo.png" alt="WebDuos Logo" class="h-14 w-14 mr-4 object-contain">
-  WebDuos
-</div>
+        <!-- Desktop Header (Hidden on Mobile) -->
+        <div class="hidden md:flex justify-between items-center h-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Logo with Image -->
+            <div class="text-xl font-bold text-primary-600 flex items-center animate-scale-in">
+                <img src="https://i.postimg.cc/MTrx7JRg/logo.png" alt="WebDuos Logo" class="h-14 w-14 mr-3 object-contain hover-grow">
+                WebDuos
+            </div>
 
-    <!-- Desktop Navigation with Increased Gap -->
-    <nav class="flex space-x-12 text-sm font-medium">
-      <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors">Home</a>
-      <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors">About</a>
-      <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors">Story</a>
-      <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors">Services</a>
-      <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors">Work</a>
-      <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors">Contact</a>
-      <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition">Get Quote</a>
-    </nav>
-  </div>
-</header>
+            <!-- Desktop Navigation with Increased Gap -->
+            <nav class="flex space-x-12 text-sm font-medium">
+                <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">Home</a>
+                <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">About</a>
+                <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">Story</a>
+                <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">Services</a>
+                <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">Work</a>
+                <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">Contact</a>
+                <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition hover:animate-pulse-slow">Get Quote</a>
+            </nav>
+        </div>
+    </header>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-primary-50 to-secondary-50 py-20">
+    <section class="bg-gradient-to-br from-primary-50 to-secondary-50 py-20 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Our Services</h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 animate-fade-in-up">Our Services</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up animate-delay-100">
                     Comprehensive web development solutions tailored to your business needs. From concept to launch and beyond, we've got you covered.
                 </p>
+                <div class="mt-8 animate-bounce animate-infinite animate-duration-2s">
+                    <i class="fas fa-chevron-down text-primary-600 text-2xl"></i>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Services Overview -->
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Web Development -->
-                <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-6">
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 animate-fade-in-up animate-delay-100">
+                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-6 animate-pulse">
                         <i class="fas fa-laptop-code text-primary-600 text-2xl"></i>
                     </div>
                     <h3 class="text-2xl font-semibold text-gray-900 mb-4">Web Development</h3>
@@ -135,32 +224,32 @@
                         Custom websites built with modern technologies including React, Vue.js, Node.js, and more. Responsive, fast, and SEO-optimized.
                     </p>
                     <ul class="space-y-2 mb-6">
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-100">
                             <i class="fas fa-check text-primary-600 mr-2"></i>
                             Responsive Design
                         </li>
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-200">
                             <i class="fas fa-check text-primary-600 mr-2"></i>
                             Modern Frameworks
                         </li>
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-300">
                             <i class="fas fa-check text-primary-600 mr-2"></i>
                             Performance Optimization
                         </li>
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-400">
                             <i class="fas fa-check text-primary-600 mr-2"></i>
                             Cross-browser Compatibility
                         </li>
                     </ul>
                     <div class="text-primary-600 font-semibold text-lg mb-4"></div>
-                    <a href="request.html" class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium transition-colors w-full block text-center">
+                    <a href="request.html" class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium transition-colors w-full block text-center animate-pulse animate-infinite">
                         Get Quote
                     </a>
                 </div>
                 
                 <!-- UI/UX Design -->
-                <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                    <div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mb-6">
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 animate-fade-in-up animate-delay-200">
+                    <div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mb-6 animate-pulse">
                         <i class="fas fa-palette text-secondary-600 text-2xl"></i>
                     </div>
                     <h3 class="text-2xl font-semibold text-gray-900 mb-4">UI/UX Design</h3>
@@ -168,32 +257,32 @@
                         Beautiful, intuitive designs that enhance user experience and drive conversions. User-centered approach with modern aesthetics.
                     </p>
                     <ul class="space-y-2 mb-6">
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-100">
                             <i class="fas fa-check text-secondary-600 mr-2"></i>
                             User Research
                         </li>
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-200">
                             <i class="fas fa-check text-secondary-600 mr-2"></i>
                             Wireframing & Prototyping
                         </li>
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-300">
                             <i class="fas fa-check text-secondary-600 mr-2"></i>
                             Visual Design
                         </li>
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-400">
                             <i class="fas fa-check text-secondary-600 mr-2"></i>
                             Usability Testing
                         </li>
                     </ul>
                     <div class="text-secondary-600 font-semibold text-lg mb-4"></div>
-                    <a href="request.html" class="bg-secondary-600 hover:bg-secondary-700 text-white px-6 py-3 rounded-lg font-medium transition-colors w-full block text-center">
+                    <a href="request.html" class="bg-secondary-600 hover:bg-secondary-700 text-white px-6 py-3 rounded-lg font-medium transition-colors w-full block text-center animate-pulse animate-infinite">
                         Get Quote
                     </a>
                 </div>
                 
                 <!-- Additional services -->
-                <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 animate-fade-in-up animate-delay-300">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6 animate-pulse">
                         <i class="fas fa-search text-yellow-600 text-2xl"></i>
                     </div>
                     <h3 class="text-2xl font-semibold text-gray-900 mb-4">Additional services</h3>
@@ -201,32 +290,32 @@
                         Enhance your website with security, speed boosts, automation, and ongoing support for peak performance and much more for your Websites.
                     </p>
                     <ul class="space-y-2 mb-6">
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-100">
                             <i class="fas fa-check text-yellow-600 mr-2"></i>
                             Google Maps integration
                         </li>
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-200">
                             <i class="fas fa-check text-yellow-600 mr-2"></i>
                              Brand Identity  Design   
                          </li>
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-300">
                             <i class="fas fa-check text-yellow-600 mr-2"></i>
                             Multi-page Web structure
                         </li>
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-400">
                             <i class="fas fa-check text-yellow-600 mr-2"></i>
                             Custom forms
                         </li>
                     </ul>
                     <div class="text-yellow-600 font-semibold text-lg mb-4"></div>
-                    <a href="request.html" class="bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-3 rounded-lg font-medium transition-colors w-full block text-center">
+                    <a href="request.html" class="bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-3 rounded-lg font-medium transition-colors w-full block text-center animate-pulse animate-infinite">
                         Get Quote
                     </a>
                 </div>
                 
                 <!-- E-commerce Solutions -->
-                <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 animate-fade-in-up animate-delay-100">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6 animate-pulse">
                         <i class="fas fa-shopping-cart text-purple-600 text-2xl"></i>
                     </div>
                     <h3 class="text-2xl font-semibold text-gray-900 mb-4">E-commerce Solutions</h3>
@@ -234,32 +323,32 @@
                         Complete online store solutions with payment integration, inventory management, and customer analytics.
                     </p>
                     <ul class="space-y-2 mb-6">
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-100">
                             <i class="fas fa-check text-purple-600 mr-2"></i>
                             Payment Gateway Integration
                         </li>
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-200">
                             <i class="fas fa-check text-purple-600 mr-2"></i>
                             Inventory Management
                         </li>
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-300">
                             <i class="fas fa-check text-purple-600 mr-2"></i>
                             Order Management
                         </li>
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-400">
                             <i class="fas fa-check text-purple-600 mr-2"></i>
                             Customer Analytics
                         </li>
                     </ul>
                     <div class="text-purple-600 font-semibold text-lg mb-4"></div>
-                    <a href="request.html" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-colors w-full block text-center">
+                    <a href="request.html" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-colors w-full block text-center animate-pulse animate-infinite">
                         Get Quote
                     </a>
                 </div>
                 
                 <!-- Custom & Responsive Designs-->
-                <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                    <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-6">
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 animate-fade-in-up animate-delay-200">
+                    <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-6 animate-pulse">
                         <i class="fas fa-cogs text-pink-600 text-2xl"></i>
                     </div>
                     <h3 class="text-2xl font-semibold text-gray-900 mb-4">Custom & Responsive Designs</h3>
@@ -267,32 +356,32 @@
                         Custom & responsive designs that are easy to manage and visualy attractive.
                     </p>
                     <ul class="space-y-2 mb-6">
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-100">
                             <i class="fas fa-check text-pink-600 mr-2"></i>
                           Mobile-first, cross-browser compatibility
                         </li>
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-200">
                             <i class="fas fa-check text-pink-600 mr-2"></i>
                             Pixel-perfect designs across devices
                         </li>
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-300">
                             <i class="fas fa-check text-pink-600 mr-2"></i>
                             3+ languages used in development
                         </li>
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-400">
                             <i class="fas fa-check text-pink-600 mr-2"></i>
                             Frontend and backend development
                         </li>
                     </ul>
                     <div class="text-pink-600 font-semibold text-lg mb-4"></div>
-                    <a href="request.html" class="bg-pink-600 hover:bg-pink-700 text-white px-6 py-3 rounded-lg font-medium transition-colors w-full block text-center">
+                    <a href="request.html" class="bg-pink-600 hover:bg-pink-700 text-white px-6 py-3 rounded-lg font-medium transition-colors w-full block text-center animate-pulse animate-infinite">
                         Get Quote
                     </a>
                 </div>
                 
                 <!-- Maintenance & Support -->
-                <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-6">
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 animate-fade-in-up animate-delay-300">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-6 animate-pulse">
                         <i class="fas fa-tools text-indigo-600 text-2xl"></i>
                     </div>
                     <h3 class="text-2xl font-semibold text-gray-900 mb-4">Maintenance & Support</h3>
@@ -300,25 +389,25 @@
                         Ongoing website maintenance, security updates, backups, and technical support to keep your site running smoothly.
                     </p>
                     <ul class="space-y-2 mb-6">
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-100">
                             <i class="fas fa-check text-indigo-600 mr-2"></i>
                             Regular Updates
                         </li>
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-200">
                             <i class="fas fa-check text-indigo-600 mr-2"></i>
                             Security Monitoring
                         </li>
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-300">
                             <i class="fas fa-check text-indigo-600 mr-2"></i>
                             Automated Backups
                         </li>
-                        <li class="flex items-center text-gray-600">
+                        <li class="flex items-center text-gray-600 animate-fade-in-right animate-delay-400">
                             <i class="fas fa-check text-indigo-600 mr-2"></i>
                             24/7 Support
                         </li>
                     </ul>
                     <div class="text-indigo-600 font-semibold text-lg mb-4"></div>
-                    <a href="request.html" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition-colors w-full block text-center">
+                    <a href="request.html" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition-colors w-full block text-center animate-pulse animate-infinite">
                         Get Quote
                     </a>
                 </div>
@@ -327,18 +416,18 @@
     </section>
 
     <!-- Process Section -->
-    <section class="py-20 bg-gray-50">
+    <section class="py-20 bg-gray-50 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Development Process</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 animate-fade-in-up">Our Development Process</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up animate-delay-100">
                     A proven methodology that ensures successful project delivery from start to finish.
                 </p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div class="text-center animate-fade-in-left">
+                    <div class="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-float">
                         <div class="text-primary-600 text-2xl font-bold">1</div>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">Discovery</h3>
@@ -347,8 +436,8 @@
                     </p>
                 </div>
                 
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div class="text-center animate-fade-in-left animate-delay-100">
+                    <div class="w-20 h-20 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-float animate-delay-1s">
                         <div class="text-secondary-600 text-2xl font-bold">2</div>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">Design</h3>
@@ -357,8 +446,8 @@
                     </p>
                 </div>
                 
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div class="text-center animate-fade-in-left animate-delay-200">
+                    <div class="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-float animate-delay-2s">
                         <div class="text-yellow-600 text-2xl font-bold">3</div>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">Development</h3>
@@ -367,8 +456,8 @@
                     </p>
                 </div>
                 
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div class="text-center animate-fade-in-left animate-delay-300">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-float animate-delay-3s">
                         <div class="text-purple-600 text-2xl font-bold">4</div>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">Launch</h3>
@@ -381,57 +470,57 @@
     </section>
 
     <!-- Technologies Section -->
-<section class="py-20 bg-white">
+<section class="py-20 bg-white overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Technologies We Use</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 animate-fade-in-up">Technologies We Use</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up animate-delay-100">
                 We stay current with the latest technologies to deliver cutting-edge solutions.
             </p>
         </div>
         
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div class="text-center">
-                <div class="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                    <i class="fab fa-js text-3xl text-yellow-400"></i>
+            <div class="text-center animate-fade-in animate-delay-100">
+                <div class="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-3 hover-rotate transition-transform">
+                    <i class="fab fa-js text-3xl text-yellow-400 animate-wiggle"></i>
                 </div>
                 <div class="text-gray-700 font-medium">JavaScript</div>
             </div>
             
-            <div class="text-center">
-                <div class="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                    <i class="fab fa-python text-3xl text-blue-600"></i>
+            <div class="text-center animate-fade-in animate-delay-200">
+                <div class="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-3 hover-rotate transition-transform">
+                    <i class="fab fa-python text-3xl text-blue-600 animate-spin animate-duration-3s"></i>
                 </div>
                 <div class="text-gray-700 font-medium">Python</div>
             </div>
             
-            <div class="text-center">
-                <div class="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                    <i class="fab fa-html5 text-3xl text-orange-500"></i>
+            <div class="text-center animate-fade-in animate-delay-300">
+                <div class="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-3 hover-rotate transition-transform">
+                    <i class="fab fa-html5 text-3xl text-orange-500 animate-bounce"></i>
                 </div>
                 <div class="text-gray-700 font-medium">HTML5</div>
             </div>
             
-            <div class="text-center">
-                <div class="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                    <i class="fab fa-css3-alt text-3xl text-blue-500"></i>
+            <div class="text-center animate-fade-in animate-delay-400">
+                <div class="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-3 hover-rotate transition-transform">
+                    <i class="fab fa-css3-alt text-3xl text-blue-500 animate-pulse"></i>
                 </div>
                 <div class="text-gray-700 font-medium">CSS3</div>
             </div>
         </div>
     </div>
 </section>    <!-- CTA Section -->
-    <section class="py-20 bg-primary-600">
+    <section class="py-20 bg-primary-600 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Get Started?</h2>
-            <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 animate-fade-in-up">Ready to Get Started?</h2>
+            <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto animate-fade-in-up animate-delay-100">
                 Let's discuss your project requirements and provide you with a customized solution that fits your budget and timeline.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="request.html" class="bg-white text-primary-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animate-delay-200">
+                <a href="request.html" class="bg-white text-primary-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors hover-grow">
                     Request Quote
                 </a>
-                <a href="contact.html" class="border-2 border-white text-white hover:bg-white hover:text-primary-600 px-8 py-3 rounded-lg font-semibold transition-colors">
+                <a href="contact.html" class="border-2 border-white text-white hover:bg-white hover:text-primary-600 px-8 py-3 rounded-lg font-semibold transition-colors hover-grow">
                     Contact Us
                 </a>
             </div>
@@ -439,32 +528,32 @@
     </section>
 
     <!-- Footer -->
-<footer class="bg-gray-900 text-white py-16">
+<footer class="bg-gray-900 text-white py-16 overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Footer Grid: Company Info + 3 Columns -->
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
       
       <!-- Company Info -->
-      <div class="space-y-4">
-        <div class="text-2xl font-bold text-primary-400">
+      <div class="space-y-4 animate-fade-in-left">
+        <div class="text-2xl font-bold text-primary-400 hover-grow transition-transform">
           <i class="fas fa-code mr-2"></i>WebDuos
         </div>
         <p class="text-gray-300">
           Pakistan's premier web development agency, crafting digital excellence since 2019.
         </p>
         <div class="flex space-x-4">
-          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
-            <i class="fab fa-facebook-f"></i>
+          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors hover-grow">
+            <i class="fab fa-facebook-f animate-wiggle"></i>
           </a>
-          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
-            <i class="fab fa-twitter"></i>
+          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors hover-grow">
+            <i class="fab fa-twitter animate-wiggle animate-delay-100"></i>
           </a>
-          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
-            <i class="fab fa-linkedin-in"></i>
+          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors hover-grow">
+            <i class="fab fa-linkedin-in animate-wiggle animate-delay-200"></i>
           </a>
-          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
-            <i class="fab fa-instagram"></i>
+          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors hover-grow">
+            <i class="fab fa-instagram animate-wiggle animate-delay-300"></i>
           </a>
         </div>
       </div>
@@ -474,37 +563,37 @@
         <div class="grid grid-cols-3 gap-4">
 
           <!-- Quick Links -->
-          <div>
+          <div class="animate-fade-in-down">
             <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
             <ul class="space-y-2 text-sm">
-              <li><a href="index.html" class="text-gray-300 hover:text-primary-400 transition-colors">Home</a></li>
-              <li><a href="about.html" class="text-gray-300 hover:text-primary-400 transition-colors">About Us</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Services</a></li>
-              <li><a href="portfolio.html" class="text-gray-300 hover:text-primary-400 transition-colors">Portfolio</a></li>
-              <li><a href="contact.html" class="text-gray-300 hover:text-primary-400 transition-colors">Contact</a></li>
+              <li><a href="index.html" class="text-gray-300 hover:text-primary-400 transition-colors hover-grow">Home</a></li>
+              <li><a href="about.html" class="text-gray-300 hover:text-primary-400 transition-colors hover-grow">About Us</a></li>
+              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors hover-grow">Services</a></li>
+              <li><a href="portfolio.html" class="text-gray-300 hover:text-primary-400 transition-colors hover-grow">Portfolio</a></li>
+              <li><a href="contact.html" class="text-gray-300 hover:text-primary-400 transition-colors hover-grow">Contact</a></li>
             </ul>
           </div>
 
           <!-- Services -->
-          <div>
+          <div class="animate-fade-in-down animate-delay-100">
             <h3 class="text-lg font-semibold mb-4">Services</h3>
             <ul class="space-y-2 text-sm">
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Web Development</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">UI/UX Design</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Additional Services</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">E-commerce</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Maintenance</a></li>
+              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors hover-grow">Web Development</a></li>
+              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors hover-grow">UI/UX Design</a></li>
+              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors hover-grow">Additional Services</a></li>
+              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors hover-grow">E-commerce</a></li>
+              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors hover-grow">Maintenance</a></li>
             </ul>
           </div>
 
           <!-- Contact Info -->
-          <div>
+          <div class="animate-fade-in-down animate-delay-200">
             <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
             <ul class="space-y-2 text-sm text-gray-300">
-              <li class="flex items-start"><i class="fas fa-phone mr-2 mt-1"></i>+92 300 1234567</li>
-              <li class="flex items-start"><i class="fas fa-envelope mr-2 mt-1"></i>webduos007<br>@gmail.com</li>
-              <li class="flex items-start"><i class="fas fa-map-marker-alt mr-2 mt-1"></i>Karachi, Pakistan</li>
-              <li class="flex items-start"><i class="fas fa-clock mr-2 mt-1"></i>Mon-Fri 9AM–6PM PKT</li>
+              <li class="flex items-start hover-grow transition-transform"><i class="fas fa-phone mr-2 mt-1"></i>+92 300 1234567</li>
+              <li class="flex items-start hover-grow transition-transform"><i class="fas fa-envelope mr-2 mt-1"></i>webduos007<br>@gmail.com</li>
+              <li class="flex items-start hover-grow transition-transform"><i class="fas fa-map-marker-alt mr-2 mt-1"></i>Karachi, Pakistan</li>
+              <li class="flex items-start hover-grow transition-transform"><i class="fas fa-clock mr-2 mt-1"></i>Mon-Fri 9AM–6PM PKT</li>
             </ul>
           </div>
 
@@ -516,11 +605,11 @@
     <hr class="border-gray-700 my-8">
 
     <!-- Bottom Footer -->
-    <div class="flex flex-col md:flex-row justify-between items-center">
+    <div class="flex flex-col md:flex-row justify-between items-center animate-fade-in-up">
       <p class="text-gray-400">© 2024 WebDuos. All rights reserved.</p>
       <div class="flex space-x-6 mt-4 md:mt-0">
-        <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">Privacy Policy</a>
-        <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">Terms of Service</a>
+        <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors hover-grow">Privacy Policy</a>
+        <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors hover-grow">Terms of Service</a>
       </div>
     </div>
   </div>
@@ -530,5 +619,26 @@
     <script src="forms.js"></script>
     <script src="main.js"></script>
     <script src="portfolio.js"></script>
+    <script>
+        // Add intersection observer for scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate-fade-in-up, .animate-fade-in-down, .animate-fade-in-left, .animate-fade-in-right, .animate-fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in-up', 'animate-fade-in-down', 'animate-fade-in-left', 'animate-fade-in-right', 'animate-fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
 </body>
 </html>

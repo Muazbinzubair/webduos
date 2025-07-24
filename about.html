@@ -42,6 +42,76 @@
                             800: '#1f2937',
                             900: '#111827'
                         }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'fade-in-down': 'fadeInDown 0.8s ease-out',
+                        'fade-in-left': 'fadeInLeft 0.8s ease-out',
+                        'fade-in-right': 'fadeInRight 0.8s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'wave': 'wave 2s linear infinite',
+                        'scale-in': 'scaleIn 0.5s ease-out forwards',
+                        'underline-expand': 'underlineExpand 0.4s ease-out forwards',
+                        'gradient-shift': 'gradientShift 8s ease infinite',
+                        'soft-bounce': 'softBounce 3s ease infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        fadeInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-8px)' }
+                        },
+                        pulse: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.8' }
+                        },
+                        wave: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '10%': { transform: 'rotate(14deg)' },
+                            '20%': { transform: 'rotate(-8deg)' },
+                            '30%': { transform: 'rotate(14deg)' },
+                            '40%': { transform: 'rotate(-4deg)' },
+                            '50%': { transform: 'rotate(10deg)' },
+                            '60%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(0deg)' }
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.95)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        },
+                        underlineExpand: {
+                            '0%': { 'background-size': '0% 2px' },
+                            '100%': { 'background-size': '100% 2px' }
+                        },
+                        gradientShift: {
+                            '0%, 100%': { 'background-position': '0% 50%' },
+                            '50%': { 'background-position': '100% 50%' }
+                        },
+                        softBounce: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' }
+                        }
                     }
                 }
             }
@@ -53,21 +123,70 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
-    <!-- Add this to all HTML files in the head section -->
-<style>
-    /* Temporary styles for page transitions */
-    .page-transition-out {
-        animation: fadeOut 0.3s ease-in-out forwards;
-    }
     
-    @keyframes fadeOut {
-        from { opacity: 1; }
-        to { opacity: 0; }
-    }
-</style>
-</head>
-<style>
-     /* Team Section */
+    <style>
+        /* Animation delays */
+        .animation-delay-100 { animation-delay: 0.1s; }
+        .animation-delay-200 { animation-delay: 0.2s; }
+        .animation-delay-300 { animation-delay: 0.3s; }
+        .animation-delay-400 { animation-delay: 0.4s; }
+        .animation-delay-500 { animation-delay: 0.5s; }
+        
+        /* Gradient text animation */
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #10b981, #3b82f6);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: textGradient 8s ease infinite;
+        }
+        
+        /* Elegant underline animation */
+        .elegant-underline {
+            position: relative;
+        }
+        
+        .elegant-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: currentColor;
+            transition: width 0.4s ease;
+        }
+        
+        .elegant-underline:hover::after {
+            width: 100%;
+        }
+        
+        /* Card hover effect */
+        .card-hover {
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Icon hover effect */
+        .icon-hover {
+            transition: transform 0.3s ease;
+        }
+        
+        .icon-hover:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Button hover glow */
+        .hover-glow:hover {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        /* Team Section */
         .team-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -81,13 +200,13 @@
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             border: 1px solid #eee;
         }
 
         .team-member:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
         .team-member img {
@@ -97,80 +216,135 @@
             object-fit: cover;
             margin: 0 auto 20px;
             display: block;
-            border: 3px solid black;
+            border: 3px solid #e5e7eb;
+            transition: all 0.5s ease;
+        }
+
+        .team-member:hover img {
+            border-color: #3b82f6;
+            transform: scale(1.05);
         }
 
         .team-member h3 {
             color: #e63946;
             margin-bottom: 15px;
             font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .team-member:hover h3 {
+            color: #3b82f6;
         }
 
         .team-member h4 {
             font-weight: 600;
             margin-bottom: 10px;
             color: #222;
+            transition: color 0.3s ease;
+        }
+
+        .team-member:hover h4 {
+            color: #3b82f6;
         }
 
         .team-member p {
             color: #666;
             font-size: 15px;
             line-height: 1.6;
+            transition: color 0.3s ease;
         }
 
-</style>
+        .team-member:hover p {
+            color: #333;
+        }
+        
+        /* Mission/Vision/Values Cards */
+        .mv-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            background: white;
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+        }
+
+        .mv-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .mv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .mv-card:hover::before {
+            transform: scaleX(1);
+        }
+    </style>
+</head>
 <body class="bg-white text-gray-900">
 
-    <header class="bg-white shadow-md sticky top-0 z-50">
+    <header class="bg-white shadow-md sticky top-0 z-50 animate-fade-in-down">
+        <!-- Mobile Header (Logo Centered, Links in Two Rows) -->
+        <div class="md:hidden flex flex-col items-center py-3 space-y-2">
+            <!-- Logo Centered -->
+            <div class="text-xl font-bold text-primary-600 animate-fade-in">
+                <i class="fas fa-code mr-1 animate-soft-bounce"></i>WebDuos
+            </div>
 
-  <!-- Mobile Header (Logo Centered, Links in One Line) -->
-  <div class="md:hidden flex flex-col items-center py-3 space-y-2">
-    <!-- Logo Centered -->
-    <div class="text-xl font-bold text-primary-600">
-      <i class="fas fa-code mr-1"></i>WebDuos
-    </div>
+            <!-- Two Rows of Links -->
+            <div class="flex flex-col items-center space-y-2 w-full px-2">
+                <!-- First Row (3 links) -->
+                <div class="flex justify-center space-x-4 w-full">
+                    <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium elegant-underline animate-fade-in-right animation-delay-100">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium elegant-underline animate-fade-in-right animation-delay-200">About</a>
+                    <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium elegant-underline animate-fade-in-right animation-delay-300">Story</a>
+                </div>
+                
+                <!-- Second Row (3 links + Get Quote) -->
+                <div class="flex justify-center space-x-4 w-full">
+                    <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium elegant-underline animate-fade-in-right animation-delay-400">Services</a>
+                    <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium elegant-underline animate-fade-in-right animation-delay-500">Work</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium elegant-underline animate-fade-in-right animation-delay-600">Contact</a>
+                    <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition whitespace-nowrap text-sm font-medium hover-glow animate-fade-in-right animation-delay-700">Get Quote</a>
+                </div>
+            </div>
+        </div>
 
-    <!-- Horizontal Scrollable Links -->
-    <nav class="flex overflow-x-auto space-x-2 px-4 text-sm font-medium scrollbar-hide">
-      <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Home</a>
-      <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">About</a>
-      <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Story</a>
-      <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Services</a>
-      <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Work</a>
-      <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Contact</a>
-      <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition whitespace-nowrap"> Get Quote</a>
-    </nav>
-  </div>
+        <!-- Desktop Header (Hidden on Mobile) -->
+        <div class="hidden md:flex justify-between items-center h-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in-down">
+            <!-- Logo with Image -->
+            <div class="text-xl font-bold text-primary-600 flex items-center animate-fade-in-left">
+                <img src="https://i.postimg.cc/MTrx7JRg/logo.png" alt="WebDuos Logo" class="h-14 w-14 mr-3 object-contain transition-transform hover:rotate-12 duration-500">
+                WebDuos
+            </div>
 
-  <!-- Desktop Header (Hidden on Mobile) -->
-  <div class="hidden md:flex justify-between items-center h-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Logo with Image -->
-<div class="text-xl font-bold text-primary-600 flex items-center">
-  <img src="logo.png" alt="WebDuos Logo" class="h-14 w-14 mr-3 object-contain">
-  WebDuos
-</div>
-
-    <!-- Desktop Navigation with Increased Gap -->
-    <nav class="flex space-x-12 text-sm font-medium">
-      <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors">Home</a>
-      <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors">About</a>
-      <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors">Story</a>
-      <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors">Services</a>
-      <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors">Work</a>
-      <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors">Contact</a>
-      <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition">Get Quote</a>
-    </nav>
-  </div>
-</header>
-
-
+            <!-- Desktop Navigation with Increased Gap -->
+            <nav class="flex space-x-12 text-sm font-medium">
+                <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors elegant-underline animate-fade-in-down animation-delay-100">Home</a>
+                <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors elegant-underline animate-fade-in-down animation-delay-200">About</a>
+                <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors elegant-underline animate-fade-in-down animation-delay-300">Story</a>
+                <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors elegant-underline animate-fade-in-down animation-delay-400">Services</a>
+                <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors elegant-underline animate-fade-in-down animation-delay-500">Work</a>
+                <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors elegant-underline animate-fade-in-down animation-delay-600">Contact</a>
+                <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition hover-glow animate-fade-in-down animation-delay-700">Get Quote</a>
+            </nav>
+        </div>
+    </header>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-primary-50 to-secondary-50 py-20">
+    <section class="bg-gradient-to-br from-primary-50 to-secondary-50 py-20 animate-fade-in">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">About WebDuos</h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 animate-fade-in-up gradient-text">About WebDuos</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up animation-delay-100">
                     We're a passionate team of developers, designers, and digital strategists dedicated to creating exceptional web experiences for businesses across Pakistan and beyond.
                 </p>
             </div>
@@ -181,9 +355,9 @@
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-bullseye text-primary-600 text-3xl"></i>
+                <div class="text-center mv-card p-8 animate-fade-in-left">
+                    <div class="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-slow">
+                        <i class="fas fa-bullseye text-primary-600 text-3xl icon-hover"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
                     <p class="text-gray-600 leading-relaxed">
@@ -191,9 +365,9 @@
                     </p>
                 </div>
                 
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-eye text-secondary-600 text-3xl"></i>
+                <div class="text-center mv-card p-8 animate-fade-in-up">
+                    <div class="w-20 h-20 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-slow">
+                        <i class="fas fa-eye text-secondary-600 text-3xl icon-hover"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
                     <p class="text-gray-600 leading-relaxed">
@@ -201,9 +375,9 @@
                     </p>
                 </div>
                 
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-heart text-yellow-600 text-3xl"></i>
+                <div class="text-center mv-card p-8 animate-fade-in-right">
+                    <div class="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-slow">
+                        <i class="fas fa-heart text-yellow-600 text-3xl icon-hover"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Values</h3>
                     <p class="text-gray-600 leading-relaxed">
@@ -214,71 +388,83 @@
         </div>
     </section>
 
- <!-- Team Section -->
-    <section id="team">
-        <div class="container">
-            <h2 class="red"></h2>
-            <div class="team-container">
-                <div class="team-member">
-                    <img src="new.png" alt="Maaz bin Zubair">
-                    <h4>Maaz bin Zubair (Backend Developer)</h4>
-                    <p>Hello, I’m your back-end developer — I ensure your website runs smoothly, securely, and is built to scale with your business.</p>
+    <!-- Team Section -->
+    <section id="team" class="py-12 animate-fade-in">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-center gap-8 md:gap-12 lg:gap-16">
+                <!-- Team Member 1 -->
+                <div class="team-member text-center w-full md:w-auto mb-8 md:mb-0 animate-scale-in">
+                    <img src="https://i.postimg.cc/d106bzXs/new.png" 
+                         alt="Maaz bin Zubair" 
+                         class="w-48 h-48 md:w-56 md:h-56 rounded-full object-cover mx-auto mb-4 border-4 border-white shadow-lg animate-soft-bounce">
+                    <h4 class="text-xl font-semibold text-gray-800 mb-2">Maaz bin Zubair</h4>
+                    <p class="text-sm md:text-base text-primary-600 font-medium mb-3">Backend Developer</p>
+                    <p class="text-gray-600 max-w-xs mx-auto text-sm md:text-base">
+                        Hello, I'm your back-end developer — I ensure your website runs smoothly, securely, and is built to scale with your business.
+                    </p>
                 </div>
-                <div class="team-member">
-                    <img src="new.png" alt="Adan Fatima Malik">
-                    <h4>Adan Fatima Malik (Frontend Developer)</h4>
-                    <p>Hi, I’m your front-end developer — I focus on creating clean, responsive designs that reflect your brand beautifully on every screen.</p>
+                
+                <!-- Team Member 2 -->
+                <div class="team-member text-center w-full md:w-auto animate-scale-in animation-delay-200">
+                    <img src="https://i.postimg.cc/d106bzXs/new.png" 
+                         alt="Adan Fatima Malik" 
+                         class="w-48 h-48 md:w-56 md:h-56 rounded-full object-cover mx-auto mb-4 border-4 border-white shadow-lg animate-soft-bounce animation-delay-200">
+                    <h4 class="text-xl font-semibold text-gray-800 mb-2">Adan Fatima Malik</h4>
+                    <p class="text-sm md:text-base text-primary-600 font-medium mb-3">Frontend Developer</p>
+                    <p class="text-gray-600 max-w-xs mx-auto text-sm md:text-base">
+                        Hi, I'm your front-end developer — I focus on creating clean, responsive designs that reflect your brand beautifully on every screen.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Why Choose Us -->
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-white animate-fade-in">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose WebDuos?</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 animate-fade-in-up">Why Choose WebDuos?</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up animation-delay-100">
                     We combine technical expertise with creative vision to deliver solutions that exceed expectations.
                 </p>
             </div>
             
-                
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-clock text-secondary-600 text-2xl"></i>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="text-center p-6 bg-white rounded-lg border border-gray-100 card-hover animate-fade-in-up">
+                    <div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-slow">
+                        <i class="fas fa-clock text-secondary-600 text-2xl icon-hover"></i>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">Timely Delivery</h3>
                     <p class="text-gray-600">We respect deadlines and ensure your project is delivered on time, every time.</p>
                 </div>
                 
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-handshake text-yellow-600 text-2xl"></i>
+                <div class="text-center p-6 bg-white rounded-lg border border-gray-100 card-hover animate-fade-in-up animation-delay-100">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-slow">
+                        <i class="fas fa-handshake text-yellow-600 text-2xl icon-hover"></i>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">Client-Focused</h3>
                     <p class="text-gray-600">Your success is our priority. We work closely with you throughout the entire process.</p>
                 </div>
                 
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-cogs text-purple-600 text-2xl"></i>
+                <div class="text-center p-6 bg-white rounded-lg border border-gray-100 card-hover animate-fade-in-up animation-delay-200">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-slow">
+                        <i class="fas fa-cogs text-purple-600 text-2xl icon-hover"></i>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">Latest Technology</h3>
                     <p class="text-gray-600">We use cutting-edge tools and technologies to build future-ready solutions.</p>
                 </div>
                 
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-headset text-pink-600 text-2xl"></i>
+                <div class="text-center p-6 bg-white rounded-lg border border-gray-100 card-hover animate-fade-in-up">
+                    <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-slow">
+                        <i class="fas fa-headset text-pink-600 text-2xl icon-hover"></i>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">24/7 Support</h3>
                     <p class="text-gray-600">Ongoing support and maintenance to keep your website running smoothly.</p>
                 </div>
                 
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-dollar-sign text-indigo-600 text-2xl"></i>
+                <div class="text-center p-6 bg-white rounded-lg border border-gray-100 card-hover animate-fade-in-up animation-delay-100">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-slow">
+                        <i class="fas fa-dollar-sign text-indigo-600 text-2xl icon-hover"></i>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">Competitive Pricing</h3>
                     <p class="text-gray-600">High-quality solutions at prices that fit your budget and deliver ROI.</p>
@@ -288,17 +474,17 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 bg-primary-600">
+    <section class="py-20 bg-primary-600 animate-fade-in">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Work Together?</h2>
-            <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 animate-fade-in-up">Ready to Work Together?</h2>
+            <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto animate-fade-in-up animation-delay-100">
                 Let's discuss your project and see how we can help bring your vision to life.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="request.html" class="bg-white text-primary-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-200">
+                <a href="request.html" class="bg-white text-primary-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors hover-glow">
                     Start Your Project
                 </a>
-                <a href="contact.html" class="border-2 border-white text-white hover:bg-white hover:text-primary-600 px-8 py-3 rounded-lg font-semibold transition-colors">
+                <a href="contact.html" class="border-2 border-white text-white hover:bg-white hover:text-primary-600 px-8 py-3 rounded-lg font-semibold transition-colors hover-glow">
                     Get In Touch
                 </a>
             </div>
@@ -306,95 +492,101 @@
     </section>
 
     <!-- Footer -->
-<footer class="bg-gray-900 text-white py-16">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
-    <!-- Footer Grid: Company Info + 3 Columns -->
-    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-      
-      <!-- Company Info -->
-      <div class="space-y-4">
-        <div class="text-2xl font-bold text-primary-400">
-          <i class="fas fa-code mr-2"></i>WebDuos
+    <footer class="bg-gray-900 text-white py-16 animate-fade-in">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <div class="space-y-4 animate-fade-in-up">
+                    <div class="text-2xl font-bold text-primary-400">
+                        <i class="fas fa-code mr-2 animate-soft-bounce"></i>WebDuos
+                    </div>
+                    <p class="text-gray-300">
+                        Pakistan's premier web development agency, crafting digital excellence since 2019.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://web.facebook.com/profile.php?id=61577790401985" class="text-gray-400 hover:text-primary-400 transition-colors icon-hover">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/web_duos/" class="text-gray-400 hover:text-primary-400 transition-colors icon-hover">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-span-1 lg:col-span-3 w-full">
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="animate-fade-in-up animation-delay-100">
+                            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                            <ul class="space-y-2 text-sm">
+                                <li><a href="index.html" class="text-gray-300 hover:text-primary-400 transition-colors elegant-underline">Home</a></li>
+                                <li><a href="about.html" class="text-gray-300 hover:text-primary-400 transition-colors elegant-underline">About Us</a></li>
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors elegant-underline">Services</a></li>
+                                <li><a href="portfolio.html" class="text-gray-300 hover:text-primary-400 transition-colors elegant-underline">Portfolio</a></li>
+                                <li><a href="contact.html" class="text-gray-300 hover:text-primary-400 transition-colors elegant-underline">Contact</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="animate-fade-in-up animation-delay-200">
+                            <h3 class="text-lg font-semibold mb-4">Services</h3>
+                            <ul class="space-y-2 text-sm">
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors elegant-underline">Web Development</a></li>
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors elegant-underline">UI/UX Design</a></li>
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors elegant-underline">Additional Services</a></li>
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors elegant-underline">E-commerce</a></li>
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors elegant-underline">Maintenance</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="animate-fade-in-up animation-delay-300">
+                            <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                            <ul class="space-y-2 text-sm text-gray-300">
+                                <li class="flex items-start"><i class="fas fa-phone mr-2 mt-1"></i>+92 300 1234567</li>
+                                <li class="flex items-start"><i class="fas fa-envelope mr-2 mt-1"></i>webduos007<br>@gmail.com</li>
+                                <li class="flex items-start"><i class="fas fa-map-marker-alt mr-2 mt-1"></i>Karachi, Pakistan</li>
+                                <li class="flex items-start"><i class="fas fa-clock mr-2 mt-1"></i>Mon-Fri 9AM–6PM PKT</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-gray-700 my-8">
+
+            <div class="flex flex-col md:flex-row justify-between items-center animate-fade-in-up animation-delay-400">
+                <p class="text-gray-400">© 2024 WebDuos. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors elegant-underline">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors elegant-underline">Terms of Service</a>
+                </div>
+            </div>
         </div>
-        <p class="text-gray-300">
-          Pakistan's premier web development agency, crafting digital excellence since 2019.
-        </p>
-        <div class="flex space-x-4">
-          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </div>
-      </div>
+    </footer>
 
-      <!-- Quick Links / Services / Contact Info in 3 columns always -->
-      <div class="col-span-1 lg:col-span-3 w-full">
-        <div class="grid grid-cols-3 gap-4">
-
-          <!-- Quick Links -->
-          <div>
-            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul class="space-y-2 text-sm">
-              <li><a href="index.html" class="text-gray-300 hover:text-primary-400 transition-colors">Home</a></li>
-              <li><a href="about.html" class="text-gray-300 hover:text-primary-400 transition-colors">About Us</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Services</a></li>
-              <li><a href="portfolio.html" class="text-gray-300 hover:text-primary-400 transition-colors">Portfolio</a></li>
-              <li><a href="contact.html" class="text-gray-300 hover:text-primary-400 transition-colors">Contact</a></li>
-            </ul>
-          </div>
-
-          <!-- Services -->
-          <div>
-            <h3 class="text-lg font-semibold mb-4">Services</h3>
-            <ul class="space-y-2 text-sm">
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Web Development</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">UI/UX Design</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Additional Services</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">E-commerce</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Maintenance</a></li>
-            </ul>
-          </div>
-
-          <!-- Contact Info -->
-          <div>
-            <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
-            <ul class="space-y-2 text-sm text-gray-300">
-              <li class="flex items-start"><i class="fas fa-phone mr-2 mt-1"></i>+92 300 1234567</li>
-              <li class="flex items-start"><i class="fas fa-envelope mr-2 mt-1"></i>webduos007<br>@gmail.com</li>
-              <li class="flex items-start"><i class="fas fa-map-marker-alt mr-2 mt-1"></i>Karachi, Pakistan</li>
-              <li class="flex items-start"><i class="fas fa-clock mr-2 mt-1"></i>Mon-Fri 9AM–6PM PKT</li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- Divider -->
-    <hr class="border-gray-700 my-8">
-
-    <!-- Bottom Footer -->
-    <div class="flex flex-col md:flex-row justify-between items-center">
-      <p class="text-gray-400">© 2024 WebDuos. All rights reserved.</p>
-      <div class="flex space-x-6 mt-4 md:mt-0">
-        <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">Privacy Policy</a>
-        <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">Terms of Service</a>
-      </div>
-    </div>
-  </div>
-</footer>
     <!-- Custom JavaScript -->
     <script src="form-handler.js"></script>
     <script src="forms.js"></script>
     <script src="main.js"></script>
-    <script src="portfolio.js"></script></body>
+    <script src="portfolio.js"></script>
+    
+    <script>
+        // Enhanced Intersection Observer for scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('[class*="animate-"]');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
 </html>

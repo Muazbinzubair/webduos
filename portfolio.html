@@ -42,6 +42,73 @@
                             800: '#1f2937',
                             900: '#111827'
                         }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'slide-down': 'slideDown 0.8s ease-out',
+                        'slide-left': 'slideLeft 0.8s ease-out',
+                        'slide-right': 'slideRight 0.8s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'wave': 'wave 2s linear infinite',
+                        'rotate': 'rotate 10s linear infinite',
+                        'scale-in': 'scaleIn 0.5s ease-out',
+                        'ripple': 'ripple 1.5s ease-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        slideLeft: {
+                            '0%': { transform: 'translateX(20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        slideRight: {
+                            '0%': { transform: 'translateX(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        wave: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '10%': { transform: 'rotate(14deg)' },
+                            '20%': { transform: 'rotate(-8deg)' },
+                            '30%': { transform: 'rotate(14deg)' },
+                            '40%': { transform: 'rotate(-4deg)' },
+                            '50%': { transform: 'rotate(10deg)' },
+                            '60%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(0deg)' }
+                        },
+                        rotate: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' }
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        },
+                        ripple: {
+                            '0%': { transform: 'scale(0.8)', opacity: '1' },
+                            '70%': { transform: 'scale(1.2)', opacity: '0.7' },
+                            '100%': { transform: 'scale(1.4)', opacity: '0' }
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px rgba(59, 130, 246, 0.5)' },
+                            '100%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.8)' }
+                        }
                     }
                 }
             }
@@ -52,7 +119,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <!-- Add this to all HTML files in the head section -->
 <style>
     /* Temporary styles for page transitions */
@@ -64,59 +131,120 @@
         from { opacity: 1; }
         to { opacity: 0; }
     }
+    
+    /* Custom animation classes */
+    .animate-delay-100 {
+        animation-delay: 100ms;
+    }
+    .animate-delay-200 {
+        animation-delay: 200ms;
+    }
+    .animate-delay-300 {
+        animation-delay: 300ms;
+    }
+    .animate-delay-400 {
+        animation-delay: 400ms;
+    }
+    .animate-delay-500 {
+        animation-delay: 500ms;
+    }
+    .animate-delay-600 {
+        animation-delay: 600ms;
+    }
+    .animate-delay-700 {
+        animation-delay: 700ms;
+    }
+    .animate-delay-800 {
+        animation-delay: 800ms;
+    }
+    
+    /* Hover animations */
+    .hover-grow {
+        transition: transform 0.3s ease;
+    }
+    .hover-grow:hover {
+        transform: scale(1.03);
+    }
+    
+    .hover-rotate {
+        transition: transform 0.3s ease;
+    }
+    .hover-rotate:hover {
+        transform: rotate(2deg);
+    }
+    
+    /* Scroll reveal animations */
+    [data-scroll] {
+        opacity: 0;
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    [data-scroll="fade-in"] {
+        transform: translateY(20px);
+    }
+    [data-scroll="fade-left"] {
+        transform: translateX(20px);
+    }
+    [data-scroll="fade-right"] {
+        transform: translateX(-20px);
+    }
+    [data-scroll].is-visible {
+        opacity: 1;
+        transform: translate(0);
+    }
 </style>
 </head>
-<body class="bg-white text-gray-900">
+<body class="bg-white text-gray-900 overflow-x-hidden">
 
 
-    <header class="bg-white shadow-md sticky top-0 z-50">
+    <header class="bg-white shadow-md sticky top-0 z-50 animate-slide-down">
+        <!-- Mobile Header (Logo Centered, Links in One Line) -->
+        <div class="md:hidden flex flex-col items-center py-3 space-y-2">
+            <!-- Logo Centered -->
+            <div class="text-xl font-bold text-primary-600 animate-scale-in">
+                <i class="fas fa-code mr-1"></i>WebDuos
+            </div>
 
-  <!-- Mobile Header (Logo Centered, Links in One Line) -->
-  <div class="md:hidden flex flex-col items-center py-3 space-y-2">
-    <!-- Logo Centered -->
-    <div class="text-xl font-bold text-primary-600">
-      <i class="fas fa-code mr-1"></i>WebDuos
-    </div>
+            <!-- Horizontal Scrollable Links -->
+            <nav class="flex overflow-x-auto space-x-6 px-4 text-sm font-medium scrollbar-hide">
+                <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">Home</a>
+                <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">About</a>
+                <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">Story</a>
+            </nav>
+            <div class ="w-full flex justify-center items-center space-x-4 mt-2">
+                <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">Services</a>
+                <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">Work</a>
+                <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">Contact</a>
+                <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition whitespace-nowrap hover:animate-pulse-slow"> Get Quote</a>
+            </div>
+        </div>
 
-    <!-- Horizontal Scrollable Links -->
-    <nav class="flex overflow-x-auto space-x-2 px-4 text-sm font-medium scrollbar-hide">
-      <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Home</a>
-      <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">About</a>
-      <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Story</a>
-      <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Services</a>
-      <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Work</a>
-      <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Contact</a>
-      <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition whitespace-nowrap"> Get Quote</a>
-    </nav>
-  </div>
+        <!-- Desktop Header (Hidden on Mobile) -->
+        <div class="hidden md:flex justify-between items-center h-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Logo with Image -->
+            <div class="text-xl font-bold text-primary-600 flex items-center animate-scale-in">
+                <img src="https://i.postimg.cc/MTrx7JRg/logo.png" alt="WebDuos Logo" class="h-14 w-14 mr-3 object-contain hover-grow">
+                WebDuos
+            </div>
 
-  <!-- Desktop Header (Hidden on Mobile) -->
-  <div class="hidden md:flex justify-between items-center h-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Logo with Image -->
-<div class="text-xl font-bold text-primary-600 flex items-center">
-  <img src="logo.png" alt="WebDuos Logo" class="h-14 w-14 mr-3 object-contain">
-  WebDuos
-</div>
-
-    <!-- Desktop Navigation with Increased Gap -->
-    <nav class="flex space-x-12 text-sm font-medium">
-      <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors">Home</a>
-      <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors">About</a>
-      <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors">Story</a>
-      <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors">Services</a>
-      <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors">Work</a>
-      <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors">Contact</a>
-      <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition">Get Quote</a>
-    </nav>
-  </div>
-</header>
+            <!-- Desktop Navigation with Increased Gap -->
+            <nav class="flex space-x-12 text-sm font-medium">
+                <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">Home</a>
+                <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">About</a>
+                <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">Story</a>
+                <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">Services</a>
+                <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">Work</a>
+                <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">Contact</a>
+                <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition hover:animate-pulse-slow">Get Quote</a>
+            </nav>
+        </div>
+    </header>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-primary-50 to-secondary-50 py-20">
+    <section class="bg-gradient-to-br from-primary-50 to-secondary-50 py-20 animate-fade-in">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Our Portfolio</h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 animate-slide-up">Our Portfolio</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-slide-up animate-delay-100">
                     Discover how we've transformed businesses across Pakistan with innovative web solutions, creative designs, and cutting-edge technology.
                 </p>
             </div>
@@ -124,318 +252,539 @@
     </section>
 
     <!-- Video Showcase Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Project Showcases</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Watch our projects come to life through detailed video presentations and interactive demonstrations.
-                </p>
-            </div>
-            
-              <!-- Video Showcase Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Project Showcases</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Watch our projects come to life through detailed video presentations and interactive demonstrations.
-                </p>
-            </div>
-            
-            <!-- Auto-scrolling Video Carousel -->
-            <div class="video-carousel-container overflow-hidden rounded-2xl shadow-2xl">
-                <div class="video-carousel flex">
-                    <div class="video-item flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-4">
-    <div class="relative bg-gray-900 rounded-xl overflow-hidden aspect-video group">
-        <!-- Video element (hidden by default) -->
-<video class="w-full h-full object-cover" autoplay muted loop playsinline>
-  <source src="images/axe.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-    
-
-
-
-
-        
-        <!-- Play button overlay (shown when video isn't playing) -->
-        <div class="absolute inset-0 flex items-center justify-center group-[.playing]:hidden cursor-pointer" onclick="this.parentElement.classList.add('playing'); this.parentElement.querySelector('video').play()">
-            <div class="text-center text-white">
-                <i class="fas fa-play-circle text-6xl mb-4 opacity-70 hover:opacity-100 transition-opacity"></i>
-                <h3 class="text-xl font-semibold mb-2">corporate Platform Demo</h3>
-                <p class="text-gray-300">Complete online store solution</p>
-            </div>
-        </div>
-        
-        <div class="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded text-sm">
-            Ready to Play
-        </div>
-    </div>
-</div>
-                    
-                    <div class="video-item flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-4">
-    <div class="relative bg-gray-900 rounded-xl overflow-hidden aspect-video group">
-        <!-- Video element (hidden by default) -->
-        <video class="w-full h-full object-cover" autoplay muted loop playsinline>
-            <source src="KIFAYA NATURALS - Premium Natural Oils and 1 more page - Work - Microsoft​ Edge 2025-07-19 00-15-40.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        autoplay
-        </video>
-        
-        <!-- Play button overlay (shown when video isn't playing) -->
-        <div class="absolute inset-0 flex items-center justify-center group-[.playing]:hidden cursor-pointer" onclick="this.parentElement.classList.add('playing'); this.parentElement.querySelector('video').play()">
-            <div class="text-center text-white">
-                <i class="fas fa-play-circle text-6xl mb-4 opacity-70 hover:opacity-100 transition-opacity"></i>
-                <h3 class="text-xl font-semibold mb-2">E-commerce Platform Demo</h3>
-                <p class="text-gray-300">Complete online store solution</p>
-            </div>
-        </div>
-        
-        <div class="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded text-sm">
-            Ready to Play
-        </div>
-    </div>
-</div>
-                  <div class="video-item flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-4">
-    <div class="relative bg-gray-900 rounded-xl overflow-hidden aspect-video group">
-        <!-- Video element (hidden by default) -->
-<video class="w-full h-full object-cover" autoplay muted loop playsinline>
-    <source src="FinePort - Premium Fashion - Work - Microsoft​ Edge 2025-07-19 00-21-21.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
-        
-        <!-- Play button overlay (shown when video isn't playing) -->
-        <div class="absolute inset-0 flex items-center justify-center group-[.playing]:hidden cursor-pointer" onclick="this.parentElement.classList.add('playing'); this.parentElement.querySelector('video').play()">
-            <div class="text-center text-white">
-                <i class="fas fa-play-circle text-6xl mb-4 opacity-70 hover:opacity-100 transition-opacity"></i>
-                <h3 class="text-xl font-semibold mb-2">E-commerce Platform Demo</h3>
-                <p class="text-gray-300">Complete online store solution</p>
-            </div>
-        </div>
-        
-        <div class="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded text-sm">
-            Ready to Play
-        </div>
-    </div>
-</div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <p> </p>        
-            <!-- Portfolio Grid -->
-            <div class="portfolio-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- E-commerce Project 1 -->
-                <div class="portfolio-item ecommerce transform transition-all duration-300" data-category="ecommerce">
-                    <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                        <img src="axe-packages.png" 
-                             alt="TechMart - E-commerce Platform" 
-                             class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="text-sm text-primary-600 font-medium bg-primary-100 px-3 py-1 rounded-full">Corporate</span>
-                                <div class="flex space-x-2">
-                                    <a href="#" class="text-gray-400 hover:text-primary-600 transition-colors">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                    <a href="#" class="text-gray-400 hover:text-primary-600 transition-colors">
-                                        <i class="fas fa-search-plus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">AXE-packages</h3>
-                            <p class="text-gray-600 mb-4"></p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                
-                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">HTML</span>
-                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">JavaScript</span>
-                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">CSS</span>
-                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Python</span>
-                            </div>
-                            <div class="text-sm text-gray-500">Completed: March 2025</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Corporate Project 1 -->
-                <div class="portfolio-item corporate transform transition-all duration-300" data-category="corporate">
-                    <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                        <img src="kifaya.png" 
-                             alt="GreenTech Solutions Corporate Website" 
-                             class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="text-sm text-secondary-600 font-medium bg-secondary-100 px-3 py-1 rounded-full">E-commerce</span>
-                                <div class="flex space-x-2">
-                                    <a href="#" class="text-gray-400 hover:text-primary-600 transition-colors">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                    <a href="#" class="text-gray-400 hover:text-primary-600 transition-colors">
-                                        <i class="fas fa-search-plus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">KIFAYA NATURALS</h3>
-                            <p class="text-gray-600 mb-4"></p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">HTML</span>
-                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">JavaScript</span>
-                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">CSS</span>
-                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Python</span>
-                            </div>
-                            <div class="text-sm text-gray-500">Completed: February 2025</div>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <!-- E-commerce Project 2 -->
-                <div class="portfolio-item ecommerce transform transition-all duration-300" data-category="ecommerce">
-                    <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                        <img src="fineports.png" 
-                             alt="FashionHub - Online Fashion Store" 
-                             class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="text-sm text-primary-600 font-medium bg-primary-100 px-3 py-1 rounded-full">E-commerce</span>
-                                <div class="flex space-x-2">
-                                    <a href="#" class="text-gray-400 hover:text-primary-600 transition-colors">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                    <a href="#" class="text-gray-400 hover:text-primary-600 transition-colors">
-                                        <i class="fas fa-search-plus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">FinePorts</h3>
-                            <p class="text-gray-600 mb-4"></p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                
-                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">HTML</span>
-                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">JavaScript</span>
-                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">CSS</span>
-                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Python</span>
-                            </div>
-                            <div class="text-sm text-gray-500">Completed: October 2024</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-20 bg-primary-600">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Start Your Project?</h2>
-            <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-                Let's create something amazing together. Get a free consultation and quote for your project.
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 animate-slide-up">Project Showcases</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-slide-up animate-delay-100">
+                Watch our projects come to life through detailed video presentations and interactive demonstrations.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="request.html" class="bg-white text-primary-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors">
-                    Request Quote
-                </a>
-                <a href="contact.html" class="border-2 border-white text-white hover:bg-white hover:text-primary-600 px-8 py-3 rounded-lg font-semibold transition-colors">
-                    Contact Us
-                </a>
+        </div>
+        
+        <!-- Auto-scrolling Video Carousel -->
+        <div class="video-carousel-container overflow-hidden rounded-2xl shadow-2xl animate-fade-in animate-delay-200 relative">
+            <div class="video-carousel flex">
+                <div class="video-item flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-4 hover-grow">
+                    <div class="relative bg-gray-900 rounded-xl overflow-hidden aspect-video group hover:shadow-xl transition-all duration-300">
+                        
+                        <!-- Video element (hidden by default) -->
+                        <video class="w-full h-full object-cover" autoplay muted loop playsinline>
+                            <source src="images/axe.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        
+                        <!-- Play button overlay (shown when video isn't playing) -->
+                        <div class="absolute inset-0 flex items-center justify-center group-[.playing]:hidden cursor-pointer" onclick="this.parentElement.classList.add('playing'); this.parentElement.querySelector('video').play()">
+                            <div class="text-center text-white animate-pulse-slow">
+                                <i class="fas fa-play-circle text-6xl mb-4 opacity-70 hover:opacity-100 transition-opacity"></i>
+                                <h3 class="text-xl font-semibold mb-2">Corporate Platform Demo</h3>
+                                <p class="text-gray-300">Complete online store solution</p>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded text-sm animate-fade-in animate-delay-300">
+                            Ready to Play
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-item flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-4 hover-grow">
+                    <div class="relative bg-gray-900 rounded-xl overflow-hidden aspect-video group hover:shadow-xl transition-all duration-300">
+                        <!-- Video element (hidden by default) -->
+                        <video class="w-full h-full object-cover" autoplay muted loop playsinline>
+                            <source src="KIFAYA NATURALS - Premium Natural Oils and 1 more page - Work - Microsoft​ Edge 2025-07-19 00-15-40.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        
+                        <!-- Play button overlay (shown when video isn't playing) -->
+                        <div class="absolute inset-0 flex items-center justify-center group-[.playing]:hidden cursor-pointer" onclick="this.parentElement.classList.add('playing'); this.parentElement.querySelector('video').play()">
+                            <div class="text-center text-white animate-pulse-slow">
+                                <i class="fas fa-play-circle text-6xl mb-4 opacity-70 hover:opacity-100 transition-opacity"></i>
+                                <h3 class="text-xl font-semibold mb-2">E-commerce Platform Demo</h3>
+                                <p class="text-gray-300">Complete online store solution</p>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded text-sm animate-fade-in animate-delay-300">
+                            Ready to Play
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="video-item flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-4 hover-grow">
+                    <div class="relative bg-gray-900 rounded-xl overflow-hidden aspect-video group hover:shadow-xl transition-all duration-300">
+                        <!-- Video element (hidden by default) -->
+                        <video class="w-full h-full object-cover" autoplay muted loop playsinline>
+                            <source src="Glamour Cosmetics - Premium Beauty Products - Work - Microsoft​ Edge 2025-07-22 22-09-41.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        
+                        <!-- Play button overlay (shown when video isn't playing) -->
+                        <div class="absolute inset-0 flex items-center justify-center group-[.playing]:hidden cursor-pointer" onclick="this.parentElement.classList.add('playing'); this.parentElement.querySelector('video').play()">
+                            <div class="text-center text-white animate-pulse-slow">
+                                <i class="fas fa-play-circle text-6xl mb-4 opacity-70 hover:opacity-100 transition-opacity"></i>
+                                <h3 class="text-xl font-semibold mb-2">E-commerce Platform Demo</h3>
+                                <p class="text-gray-300">Complete online store solution</p>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded text-sm animate-fade-in animate-delay-300">
+                            Ready to Play
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-item flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-4 hover-grow">
+                    <div class="relative bg-gray-900 rounded-xl overflow-hidden aspect-video group hover:shadow-xl transition-all duration-300">
+
+                 <!-- Video element (hidden by default) -->
+                        <video class="w-full h-full object-cover" autoplay muted loop playsinline>
+                            <source src="AXE Packages - Premium Packaging Solutions - Work - Microsoft​ Edge 2025-07-18 23-55-50.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        
+                        <!-- Play button overlay (shown when video isn't playing) -->
+                        <div class="absolute inset-0 flex items-center justify-center group-[.playing]:hidden cursor-pointer" onclick="this.parentElement.classList.add('playing'); this.parentElement.querySelector('video').play()">
+                            <div class="text-center text-white animate-pulse-slow">
+                                <i class="fas fa-play-circle text-6xl mb-4 opacity-70 hover:opacity-100 transition-opacity"></i>
+                                <h3 class="text-xl font-semibold mb-2">Corporate Platform Demo</h3>
+                                <p class="text-gray-300">Complete online store solution</p>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded text-sm animate-fade-in animate-delay-300">
+                            Ready to Play
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-item flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-4 hover-grow">
+                    <div class="relative bg-gray-900 rounded-xl overflow-hidden aspect-video group hover:shadow-xl transition-all duration-300">
+
+                        <!-- Video element (hidden by default) -->
+                        <video class="w-full h-full object-cover" autoplay muted loop playsinline>
+                            <source src="FinePort - Premium Fashion - Work - Microsoft​ Edge 2025-07-19 00-21-21.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        
+                        <!-- Play button overlay (shown when video isn't playing) -->
+                        <div class="absolute inset-0 flex items-center justify-center group-[.playing]:hidden cursor-pointer" onclick="this.parentElement.classList.add('playing'); this.parentElement.querySelector('video').play()">
+                            <div class="text-center text-white animate-pulse-slow">
+                                <i class="fas fa-play-circle text-6xl mb-4 opacity-70 hover:opacity-100 transition-opacity"></i>
+                                <h3 class="text-xl font-semibold mb-2">E-commerce Platform Demo</h3>
+                                <p class="text-gray-300">Complete online store solution</p>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded text-sm animate-fade-in animate-delay-300">
+                            Ready to Play
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
+
+   <!-- Portfolio Grid Section -->
+<section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="portfolio-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- E-commerce Project 1 -->
+            <div class="portfolio-item ecommerce transform transition-all duration-300 hover-grow" data-category="ecommerce" data-scroll="fade-up">
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-scale-in">
+                    <img src="https://i.postimg.cc/LsQQ89jY/axe-packages.png" 
+                         alt="TechMart - E-commerce Platform" 
+                         class="w-full h-48 object-cover hover:scale-105 transition-transform duration-500">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-sm text-primary-600 font-medium bg-primary-100 px-3 py-1 rounded-full animate-pulse-slow">Corporate</span>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-400 hover:text-primary-600 transition-all duration-300 hover:scale-125">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary-600 transition-all duration-300 hover:scale-125">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">AXE-packages</h3>
+                        <p class="text-gray-600 mb-4"></p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">HTML</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">JavaScript</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">CSS</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">Python</span>
+                        </div>
+                        <div class="text-sm text-gray-500 hover:text-gray-700 transition-colors duration-300">Completed: March 2025</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Corporate Project 1 -->
+            <div class="portfolio-item corporate transform transition-all duration-300 hover-grow" data-category="corporate" data-scroll="fade-up">
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-scale-in animate-delay-100">
+                    <img src="https://i.postimg.cc/fW9qMhyy/kifaya.png" 
+                         alt="GreenTech Solutions Corporate Website" 
+                         class="w-full h-48 object-cover hover:scale-105 transition-transform duration-500">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-sm text-secondary-600 font-medium bg-secondary-100 px-3 py-1 rounded-full animate-pulse-slow">E-commerce</span>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-400 hover:text-primary-600 transition-all duration-300 hover:scale-125">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary-600 transition-all duration-300 hover:scale-125">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">KIFAYA NATURALS</h3>
+                        <p class="text-gray-600 mb-4"></p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">HTML</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">JavaScript</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">CSS</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">Python</span>
+                        </div>
+                        <div class="text-sm text-gray-500 hover:text-gray-700 transition-colors duration-300">Completed: February 2025</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- E-commerce Project 2 -->
+            <div class="portfolio-item ecommerce transform transition-all duration-300 hover-grow" data-category="ecommerce" data-scroll="fade-up">
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-scale-in animate-delay-200">
+                    <img src="https://i.postimg.cc/mZCj0NpF/fineports.png" 
+                         alt="FashionHub - Online Fashion Store" 
+                         class="w-full h-48 object-cover hover:scale-105 transition-transform duration-500">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-sm text-primary-600 font-medium bg-primary-100 px-3 py-1 rounded-full animate-pulse-slow">E-commerce</span>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-400 hover:text-primary-600 transition-all duration-300 hover:scale-125">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary-600 transition-all duration-300 hover:scale-125">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">FinePorts</h3>
+                        <p class="text-gray-600 mb-4"></p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">HTML</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">JavaScript</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">CSS</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">Python</span>
+                        </div>
+                        <div class="text-sm text-gray-500 hover:text-gray-700 transition-colors duration-300">Completed: October 2024</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- E-commerce Project 3 (New) -->
+            <div class="portfolio-item ecommerce transform transition-all duration-300 hover-grow" data-category="ecommerce" data-scroll="fade-up">
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-scale-in animate-delay-300">
+                    <img src="https://i.postimg.cc/C56SSTmw/cosmetics.png" 
+                         alt="GadgetZone - Electronics Store" 
+                         class="w-full h-48 object-cover hover:scale-105 transition-transform duration-500">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-sm text-primary-600 font-medium bg-primary-100 px-3 py-1 rounded-full animate-pulse-slow">E-commerce</span>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-400 hover:text-primary-600 transition-all duration-300 hover:scale-125">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary-600 transition-all duration-300 hover:scale-125">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Glamour Cosmetics</h3>
+                        <p class="text-gray-600 mb-4"></p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">HTML</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">JavaScript</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">CSS</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">Python</span>
+                        </div>
+                        <div class="text-sm text-gray-500 hover:text-gray-700 transition-colors duration-300">Completed: January 2025</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Corporate Project 2 (New) -->
+            <div class="portfolio-item corporate transform transition-all duration-300 hover-grow" data-category="corporate" data-scroll="fade-up">
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-scale-in animate-delay-400">
+                    <img src="https://i.postimg.cc/bvnpQBLv/tpc.png" 
+                         alt="Global Finance Inc. Corporate Portal" 
+                         class="w-full h-48 object-cover hover:scale-105 transition-transform duration-500">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-sm text-secondary-600 font-medium bg-secondary-100 px-3 py-1 rounded-full animate-pulse-slow">Corporate</span>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-400 hover:text-primary-600 transition-all duration-300 hover:scale-125">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary-600 transition-all duration-300 hover:scale-125">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">The Packaging Company</h3>
+                        <p class="text-gray-600 mb-4"></p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">HTML</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">JavaScript</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">CSS</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">Python</span>
+                        </div>
+                        <div class="text-sm text-gray-500 hover:text-gray-700 transition-colors duration-300">Completed: December 2024</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- E-commerce Project 4 (New) -->
+            <div class="portfolio-item ecommerce transform transition-all duration-300 hover-grow" data-category="ecommerce" data-scroll="fade-up">
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-scale-in animate-delay-500">
+                    <img src="https://i.postimg.cc/3w6X4dNG/shoe.png" 
+                         alt="BookWorm - Online Bookstore" 
+                         class="w-full h-48 object-cover hover:scale-105 transition-transform duration-500">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-sm text-primary-600 font-medium bg-primary-100 px-3 py-1 rounded-full animate-pulse-slow">E-commerce</span>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-400 hover:text-primary-600 transition-all duration-300 hover:scale-125">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary-600 transition-all duration-300 hover:scale-125">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Elite-steps</h3>
+                        <p class="text-gray-600 mb-4"></p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">HTML</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">JavaScript</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">CSS</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-primary-100 hover:text-primary-600 transition-all duration-300">Python</span>
+                        </div>
+                        <div class="text-sm text-gray-500 hover:text-gray-700 transition-colors duration-300">Completed: November 2024</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
     <!-- Footer -->
-<footer class="bg-gray-900 text-white py-16">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
-    <!-- Footer Grid: Company Info + 3 Columns -->
-    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-      
-      <!-- Company Info -->
-      <div class="space-y-4">
-        <div class="text-2xl font-bold text-primary-400">
-          <i class="fas fa-code mr-2"></i>WebDuos
+    <footer class="bg-gray-900 text-white py-16 animate-fade-in">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Footer Grid: Company Info + 3 Columns -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="space-y-4 animate-slide-right">
+                    <div class="text-2xl font-bold text-primary-400 hover-grow">
+                        <i class="fas fa-code mr-2"></i>WebDuos
+                    </div>
+                    <p class="text-gray-300">
+                        Pakistan's premier web development agency, crafting digital excellence since 2019.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary-400 transition-all duration-300 hover:scale-125">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary-400 transition-all duration-300 hover:scale-125">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary-400 transition-all duration-300 hover:scale-125">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary-400 transition-all duration-300 hover:scale-125">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links / Services / Contact Info in 3 columns always -->
+                <div class="col-span-1 lg:col-span-3 w-full">
+                    <div class="grid grid-cols-3 gap-4">
+                        <!-- Quick Links -->
+                        <div class="animate-slide-up animate-delay-100">
+                            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                            <ul class="space-y-2 text-sm">
+                                <li><a href="index.html" class="text-gray-300 hover:text-primary-400 transition-all duration-300 hover:pl-2">Home</a></li>
+                                <li><a href="about.html" class="text-gray-300 hover:text-primary-400 transition-all duration-300 hover:pl-2">About Us</a></li>
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-all duration-300 hover:pl-2">Services</a></li>
+                                <li><a href="portfolio.html" class="text-gray-300 hover:text-primary-400 transition-all duration-300 hover:pl-2">Portfolio</a></li>
+                                <li><a href="contact.html" class="text-gray-300 hover:text-primary-400 transition-all duration-300 hover:pl-2">Contact</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Services -->
+                        <div class="animate-slide-up animate-delay-200">
+                            <h3 class="text-lg font-semibold mb-4">Services</h3>
+                            <ul class="space-y-2 text-sm">
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-all duration-300 hover:pl-2">Web Development</a></li>
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-all duration-300 hover:pl-2">UI/UX Design</a></li>
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-all duration-300 hover:pl-2">Additional Services</a></li>
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-all duration-300 hover:pl-2">E-commerce</a></li>
+                                <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-all duration-300 hover:pl-2">Maintenance</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Contact Info -->
+                        <div class="animate-slide-up animate-delay-300">
+                            <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                            <ul class="space-y-2 text-sm text-gray-300">
+                                <li class="flex items-start hover:text-white transition-colors duration-300"><i class="fas fa-phone mr-2 mt-1 animate-pulse-slow"></i>+92 300 1234567</li>
+                                <li class="flex items-start hover:text-white transition-colors duration-300"><i class="fas fa-envelope mr-2 mt-1 animate-pulse-slow"></i>webduos007<br>@gmail.com</li>
+                                <li class="flex items-start hover:text-white transition-colors duration-300"><i class="fas fa-map-marker-alt mr-2 mt-1 animate-pulse-slow"></i>Karachi, Pakistan</li>
+                                <li class="flex items-start hover:text-white transition-colors duration-300"><i class="fas fa-clock mr-2 mt-1 animate-pulse-slow"></i>Mon-Fri 9AM–6PM PKT</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <hr class="border-gray-700 my-8">
+
+            <!-- Bottom Footer -->
+            <div class="flex flex-col md:flex-row justify-between items-center animate-fade-in">
+                <p class="text-gray-400 hover:text-white transition-colors duration-300">© 2024 WebDuos. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-primary-400 transition-all duration-300 hover:scale-105">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-primary-400 transition-all duration-300 hover:scale-105">Terms of Service</a>
+                </div>
+            </div>
         </div>
-        <p class="text-gray-300">
-          Pakistan's premier web development agency, crafting digital excellence since 2019.
-        </p>
-        <div class="flex space-x-4">
-          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </div>
-      </div>
+    </footer>
 
-      <!-- Quick Links / Services / Contact Info in 3 columns always -->
-      <div class="col-span-1 lg:col-span-3 w-full">
-        <div class="grid grid-cols-3 gap-4">
-
-          <!-- Quick Links -->
-          <div>
-            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul class="space-y-2 text-sm">
-              <li><a href="index.html" class="text-gray-300 hover:text-primary-400 transition-colors">Home</a></li>
-              <li><a href="about.html" class="text-gray-300 hover:text-primary-400 transition-colors">About Us</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Services</a></li>
-              <li><a href="portfolio.html" class="text-gray-300 hover:text-primary-400 transition-colors">Portfolio</a></li>
-              <li><a href="contact.html" class="text-gray-300 hover:text-primary-400 transition-colors">Contact</a></li>
-            </ul>
-          </div>
-
-          <!-- Services -->
-          <div>
-            <h3 class="text-lg font-semibold mb-4">Services</h3>
-            <ul class="space-y-2 text-sm">
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Web Development</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">UI/UX Design</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Additional Services</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">E-commerce</a></li>
-              <li><a href="services.html" class="text-gray-300 hover:text-primary-400 transition-colors">Maintenance</a></li>
-            </ul>
-          </div>
-
-          <!-- Contact Info -->
-          <div>
-            <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
-            <ul class="space-y-2 text-sm text-gray-300">
-              <li class="flex items-start"><i class="fas fa-phone mr-2 mt-1"></i>+92 300 1234567</li>
-              <li class="flex items-start"><i class="fas fa-envelope mr-2 mt-1"></i>webduos007<br>@gmail.com</li>
-              <li class="flex items-start"><i class="fas fa-map-marker-alt mr-2 mt-1"></i>Karachi, Pakistan</li>
-              <li class="flex items-start"><i class="fas fa-clock mr-2 mt-1"></i>Mon-Fri 9AM–6PM PKT</li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- Divider -->
-    <hr class="border-gray-700 my-8">
-
-    <!-- Bottom Footer -->
-    <div class="flex flex-col md:flex-row justify-between items-center">
-      <p class="text-gray-400">© 2024 WebDuos. All rights reserved.</p>
-      <div class="flex space-x-6 mt-4 md:mt-0">
-        <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">Privacy Policy</a>
-        <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">Terms of Service</a>
-      </div>
-    </div>
-  </div>
-</footer>
     <!-- Custom JavaScript -->
     <script src="form-handler.js"></script>
     <script src="forms.js"></script>
     <script src="main.js"></script>
     <script src="portfolio.js"></script>
+    
+    <!-- Scroll reveal animation script -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Combined functionality for both carousel and scroll reveal
+            
+            // 1. Auto-scrolling video carousel
+            const carousel = document.querySelector('.video-carousel');
+            if (carousel) {
+                const items = document.querySelectorAll('.video-item');
+                if (items.length > 0) {
+                    const itemWidth = items[0].offsetWidth;
+                    let position = 0;
+                    let animationId;
+                    
+                    // Clone the first few items and append to end for infinite scrolling
+                    for (let i = 0; i < Math.min(3, items.length); i++) {
+                        const clone = items[i].cloneNode(true);
+                        carousel.appendChild(clone);
+                    }
+                    
+                    function animateScroll() {
+                        position -= 1; // Adjust speed by changing this value
+                        if (position <= -itemWidth * Math.min(3, items.length)) { 
+                            position = 0;
+                            carousel.style.transition = 'none';
+                            carousel.style.transform = `translateX(${position}px)`;
+                            // Force reflow
+                            void carousel.offsetWidth;
+                            carousel.style.transition = 'transform 0.5s ease';
+                        }
+                        carousel.style.transform = `translateX(${position}px)`;
+                        animationId = requestAnimationFrame(animateScroll);
+                    }
+                    
+                    function startAnimation() {
+                        if (!animationId) {
+                            carousel.style.transition = 'transform 0.5s ease';
+                            animateScroll();
+                        }
+                    }
+                    
+                    function stopAnimation() {
+                        cancelAnimationFrame(animationId);
+                        animationId = null;
+                    }
+                    
+                    // Start animation
+                    startAnimation();
+                    
+                    // Pause on hover
+                    const carouselContainer = document.querySelector('.video-carousel-container');
+                    if (carouselContainer) {
+                        carouselContainer.addEventListener('mouseenter', stopAnimation);
+                        carouselContainer.addEventListener('mouseleave', startAnimation);
+                    }
+                    
+                    // Clean up on page unload
+                    window.addEventListener('beforeunload', function() {
+                        cancelAnimationFrame(animationId);
+                    });
+                }
+            }
+            
+            // 2. Scroll reveal animation
+            const scrollElements = document.querySelectorAll('[data-scroll]');
+            
+            const elementInView = (el, dividend = 1) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+                );
+            };
+            
+            const elementOutofView = (el) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop > (window.innerHeight || document.documentElement.clientHeight)
+                );
+            };
+            
+            const displayScrollElement = (element) => {
+                element.classList.add('is-visible');
+            };
+            
+            const hideScrollElement = (element) => {
+                element.classList.remove('is-visible');
+            };
+            
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 1.25)) {
+                        displayScrollElement(el);
+                    } else if (elementOutofView(el)) {
+                        hideScrollElement(el);
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', () => {
+                handleScrollAnimation();
+            });
+            
+            // Initialize animations on page load
+            handleScrollAnimation();
+            
+            // Add hover effects to all elements with hover-grow class
+            document.querySelectorAll('.hover-grow').forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    item.style.transform = 'scale(1.03)';
+                });
+                item.addEventListener('mouseleave', () => {
+                    item.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>

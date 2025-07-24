@@ -65,6 +65,7 @@
         from { opacity: 1; }
         to { opacity: 0; }
     }
+    
 </style>
 <!-- Add this to your head section, after the existing styles -->
 <style>
@@ -197,162 +198,264 @@
         width: 100%;
     }
 </style>
+<!-- Add these new animation styles right before the closing </style> tag in the head section -->
+<style>
+    /* New animation styles */
+    @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    @keyframes wave {
+        0%, 100% { transform: translateY(0); }
+        25% { transform: translateY(-5px); }
+        75% { transform: translateY(5px); }
+    }
+
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
+    }
+
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    @keyframes borderPulse {
+        0% { border-color: #3b82f6; }
+        50% { border-color: #10b981; }
+        100% { border-color: #3b82f6; }
+    }
+
+    @keyframes textGlow {
+        0% { text-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+        50% { text-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
+        100% { text-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+    }
+
+    /* New animation classes */
+    .animate-rotate {
+        animation: rotate 8s linear infinite;
+    }
+
+    .animate-wave {
+        animation: wave 2s ease-in-out infinite;
+    }
+
+    .animate-shake {
+        animation: shake 0.5s ease-in-out;
+    }
+
+    .animate-gradient-bg {
+        background-size: 200% 200%;
+        animation: gradientBG 8s ease infinite;
+    }
+
+    .animate-border-pulse {
+        animation: borderPulse 3s ease infinite;
+    }
+
+    .animate-text-glow {
+        animation: textGlow 3s ease infinite;
+    }
+
+    .animate-delay-100 { animation-delay: 100ms; }
+    .animate-delay-200 { animation-delay: 200ms; }
+    .animate-delay-300 { animation-delay: 300ms; }
+    .animate-delay-400 { animation-delay: 400ms; }
+    .animate-delay-500 { animation-delay: 500ms; }
+
+    /* Section entrance animations */
+    .section-entrance {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease-out;
+    }
+
+    .section-entrance.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Icon animations */
+    .icon-hover:hover {
+        animation: shake 0.5s ease;
+    }
+
+    /* Background pattern animation */
+    .pattern-bg {
+        background-image: radial-gradient(circle, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+        background-size: 20px 20px;
+        animation: patternMove 20s linear infinite;
+    }
+
+    @keyframes patternMove {
+        0% { background-position: 0 0; }
+        100% { background-position: 100px 100px; }
+    }
+
+    /* Scroll indicator animation */
+    .scroll-indicator {
+        animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-20px); }
+        60% { transform: translateY(-10px); }
+    }
+</style>
 </head>
 
 <body class="bg-white text-gray-900">
     <!-- Header -->
-<header class="bg-white shadow-md sticky top-0 z-50">
-
-  <!-- Mobile Header (Logo Centered, Links in One Line) -->
+<header class="bg-white shadow-md sticky top-0 z-50 animate-fade-in">
+  <!-- Mobile Header -->
   <div class="md:hidden flex flex-col items-center py-3 space-y-2">
-    <!-- Logo Centered -->
-    <div class="text-xl font-bold text-primary-600">
-      <i class="fas fa-code mr-1"></i>WebDuos
+    <div class="text-xl font-bold text-primary-600 animate-slide-left">
+      <i class="fas fa-code mr-1 animate-rotate"></i>WebDuos
     </div>
-
-    <!-- Horizontal Scrollable Links -->
-    <nav class="flex overflow-x-auto space-x-2 px-4 text-sm font-medium scrollbar-hide">
-      <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Home</a>
-      <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">About</a>
-      <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Story</a>
-      <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Services</a>
-      <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Work</a>
-      <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap">Contact</a>
-      <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition whitespace-nowrap"> Get Quote</a>
-    </nav>
+    <!-- Links with staggered animations -->
+    <div class="flex flex-col items-center space-y-2 w-full px-2">
+      <div class="flex justify-center space-x-4 w-full">
+        <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium animate-fade-up animate-delay-100">Home</a>
+        <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium animate-fade-up animate-delay-200">About</a>
+        <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium animate-fade-up animate-delay-300">Story</a>
+      </div>
+      <div class="flex justify-center space-x-4 w-full">
+        <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium animate-fade-up animate-delay-400">Services</a>
+        <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium animate-fade-up animate-delay-500">Work</a>
+        <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium animate-fade-up animate-delay-600">Contact</a>
+        <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition whitespace-nowrap text-sm font-medium animate-pulse-glow">Get Quote</a>
+      </div>
+    </div>
   </div>
 
-  <!-- Desktop Header (Hidden on Mobile) -->
+  <!-- Desktop Header -->
   <div class="hidden md:flex justify-between items-center h-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Logo with Image -->
-<div class="text-xl font-bold text-primary-600 flex items-center">
-    <img src="images/logo.png" alt="WebDuos Logo" class="h-14 w-14 mr-4 object-contain">
-  WebDuos
-</div>
-
-    <!-- Desktop Navigation with Increased Gap -->
+    <div class="text-xl font-bold text-primary-600 flex items-center animate-slide-left">
+      <img src="https://i.postimg.cc/MTrx7JRg/logo.png" alt="WebDuos Logo" class="h-14 w-14 mr-3 object-contain hover-grow">
+      WebDuos
+    </div>
     <nav class="flex space-x-12 text-sm font-medium">
-      <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors">Home</a>
-      <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors">About</a>
-      <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors">Story</a>
-      <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors">Services</a>
-      <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors">Work</a>
-      <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors">Contact</a>
-      <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition">Get Quote</a>
+      <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors link-underline animate-fade-up animate-delay-100">Home</a>
+      <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors link-underline animate-fade-up animate-delay-200">About</a>
+      <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors link-underline animate-fade-up animate-delay-300">Story</a>
+      <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors link-underline animate-fade-up animate-delay-400">Services</a>
+      <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors link-underline animate-fade-up animate-delay-500">Work</a>
+      <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors link-underline animate-fade-up animate-delay-600">Contact</a>
+      <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition hover-grow animate-pulse-glow">Get Quote</a>
     </nav>
   </div>
 </header>
-
-    <!-- Hero Section -->
-    <section class="hero-section bg-gradient-to-br from-primary-50 to-secondary-50 min-h-screen flex items-center">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8">
-                    <div class="space-y-4">
-                        <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
-                            Crafting Digital
-                            <span class="text-primary-600">Excellence</span>
-                            Together
-                        </h1>
-                        <p class="text-xl text-gray-600 leading-relaxed">
-                            WebDuos transforms your vision into powerful digital experiences. We're Pakistan's premier web developers, creating innovative solutions that drive business growth.
-                        </p>
-                    </div>
-                    
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="request.html" class="cta-button bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
-                            Start Your Project
-                            <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                        <a href="portfolio.html" class="border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300">
-                            View Our Work
-                        </a>
-                    </div>
-                    
-                    <div class="flex items-center space-x-8 pt-8">
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-primary-600">Reliable</div>
-                            <div class="text-gray-600">Built fast, Built right</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-primary-600">Support</div>
-                            <div class="text-gray-600">Ongoing Support & Revisions</div>
-                        </div>
-                        
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-primary-600">Modern</div>
-                            <div class="text-gray-600">Clean & responsive</div>
-                        </div>
-                    </div>
+ <section class="hero-section bg-gradient-to-br from-primary-50 to-secondary-50 min-h-screen flex items-center pattern-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8 animate-slide-left">
+                <div class="space-y-4">
+                    <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight animate-text-glow">
+                        Crafting Digital
+                        <span class="text-primary-600">Excellence</span>
+                        Together
+                    </h1>
+                    <p class="text-xl text-gray-600 leading-relaxed animate-fade-up animate-delay-200">
+                        WebDuos transforms your vision into powerful digital experiences. We're Pakistan's premier web developers, creating innovative solutions that drive business growth.
+                    </p>
                 </div>
                 
-                <div class="relative">
-                    <img src="banner.png" 
-                         alt="Modern web development team at WebDuos" 
-                         class="rounded-2xl shadow-2xl w-full h-auto">
-                    <div class="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-xl p-6 hidden lg:block">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">
-                                <i class="fas fa-star text-primary-600 text-xl"></i>
-                            </div>
-                            <div>
-                                <div class="font-semibold text-gray-900">5.0 Rating</div>
-                                <div class="text-gray-600 text-sm">From 20+ Clients</div>
-                            </div>
+                <div class="flex flex-col sm:flex-row gap-4 animate-fade-up animate-delay-300">
+                    <a href="request.html" class="cta-button bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl animate-pulse-glow">
+                        Start Your Project
+                        <i class="fas fa-arrow-right ml-2 animate-shake"></i>
+                    </a>
+                    <a href="portfolio.html" class="border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover-grow animate-border-pulse">
+                        View Our Work
+                    </a>
+                </div>
+                
+                <div class="flex items-center space-x-8 pt-8 animate-fade-up animate-delay-400">
+                    <div class="text-center animate-wave">
+                        <div class="text-3xl font-bold text-primary-600">Reliable</div>
+                        <div class="text-gray-600">Built fast, Built right</div>
+                    </div>
+                    <div class="text-center animate-wave animate-delay-200">
+                        <div class="text-3xl font-bold text-primary-600">Support</div>
+                        <div class="text-gray-600">Ongoing Support & Revisions</div>
+                    </div>
+                    <div class="text-center animate-wave animate-delay-400">
+                        <div class="text-3xl font-bold text-primary-600">Modern</div>
+                        <div class="text-gray-600">Clean & responsive</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative animate-slide-right">
+                <img src="https://i.postimg.cc/Qt64VX5K/banner.png" 
+                     alt="Modern web development team at WebDuos" 
+                     class="rounded-2xl shadow-2xl w-full h-auto hover-grow">
+                <div class="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-xl p-6 hidden lg:block animate-float">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center animate-pulse-glow">
+                            <i class="fas fa-star text-primary-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-900">5.0 Rating</div>
+                            <div class="text-gray-600 text-sm">From 20+ Clients</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    From concept to launch, we provide comprehensive web development services tailored to your business needs.
-                </p>
+    </div>
+</section>
+ <section class="py-20 bg-white section-entrance">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 animate-fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 animate-text-glow">Our Services</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                From concept to launch, we provide comprehensive web development services tailored to your business needs.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-up animate-delay-100">
+                <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-6 icon-hover">
+                    <i class="fas fa-laptop-code text-primary-600 text-2xl animate-rotate"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Web Development</h3>
+                <p class="text-gray-600 mb-4">Custom websites built with modern technologies for optimal performance and user experience.</p>
+                <a href="services.html" class="text-primary-600 hover:text-primary-700 font-medium link-underline">Learn More <i class="fas fa-arrow-right ml-1 animate-shake"></i></a>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-laptop-code text-primary-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Web Development</h3>
-                    <p class="text-gray-600 mb-4">Custom websites built with modern technologies for optimal performance and user experience.</p>
-                    <a href="services.html" class="text-primary-600 hover:text-primary-700 font-medium">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
+            <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-up animate-delay-200">
+                <div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mb-6 icon-hover">
+                    <i class="fas fa-palette text-secondary-600 text-2xl animate-rotate"></i>
                 </div>
-                
-                <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-palette text-secondary-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">UI/UX Design</h3>
-                    <p class="text-gray-600 mb-4">Beautiful, intuitive designs that enhance user engagement and drive conversions.</p>
-                    <a href="services.html" class="text-primary-600 hover:text-primary-700 font-medium">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
-                </div>
-                
-                <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-search text-yellow-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Addtional Services</h3>
-                    <p class="text-gray-600 mb-4">Enhance your website with security, speed boosts, automation, and ongoing support for peak performance.</p>
-                    <a href="services.html" class="text-primary-600 hover:text-primary-700 font-medium">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
-                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">UI/UX Design</h3>
+                <p class="text-gray-600 mb-4">Beautiful, intuitive designs that enhance user engagement and drive conversions.</p>
+                <a href="services.html" class="text-primary-600 hover:text-primary-700 font-medium link-underline">Learn More <i class="fas fa-arrow-right ml-1 animate-shake"></i></a>
             </div>
             
-            <div class="text-center mt-12">
-                <a href="services.html" class="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
-                    View Details
-                </a>
+            <div class="service-card bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-up animate-delay-300">
+                <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6 icon-hover">
+                    <i class="fas fa-search text-yellow-600 text-2xl animate-rotate"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Addtional Services</h3>
+                <p class="text-gray-600 mb-4">Enhance your website with security, speed boosts, automation, and ongoing support for peak performance.</p>
+                <a href="services.html" class="text-primary-600 hover:text-primary-700 font-medium link-underline">Learn More <i class="fas fa-arrow-right ml-1 animate-shake"></i></a>
             </div>
         </div>
-    </section>
-
+        
+        <div class="text-center mt-12 animate-fade-up animate-delay-400">
+            <a href="services.html" class="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors hover-grow animate-pulse-glow">
+                View Details
+            </a>
+        </div>
+    </div>
+</section>
     <!-- Portfolio Preview -->
     <section class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -365,7 +468,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="portfolio-item bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <img src="khalilbedsheet.png" 
+                    <img src="https://i.postimg.cc/Y93cRKFt/khalilbedsheet.png" 
                          alt="E-commerce website design project" 
                          class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -381,7 +484,7 @@
                 </div>
                 
                 <div class="portfolio-item bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <img src="axe-packages.png" 
+                    <img src="https://i.postimg.cc/bvnpQBLv/tpc.png" 
                          alt="Corporate website design project" 
                          class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -397,7 +500,7 @@
                 </div>
                 
                 <div class="portfolio-item bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <img src="blog.png" 
+                    <img src="https://i.postimg.cc/kg8pwPrL/blog.png" 
                          alt="Blog website design project" 
                          class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -458,12 +561,8 @@
           <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
             <i class="fab fa-facebook-f"></i>
           </a>
-          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
+          
+          
           <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
             <i class="fab fa-instagram"></i>
           </a>
@@ -607,6 +706,34 @@
             }
         });
     });
+    // Update the existing JavaScript to include this section observer
+document.addEventListener('DOMContentLoaded', () => {
+    // Previous initialization code...
+    
+    // Section entrance animations
+    const sections = document.querySelectorAll('.section-entrance');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+    // Icon hover animations
+    document.querySelectorAll('.icon-hover').forEach(icon => {
+        icon.addEventListener('mouseenter', () => {
+            icon.classList.add('animate-shake');
+        });
+        icon.addEventListener('mouseleave', () => {
+            icon.classList.remove('animate-shake');
+        });
+    });
+});
 </script>
 </body>
 </html>
