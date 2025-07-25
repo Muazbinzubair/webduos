@@ -195,54 +195,49 @@
 
 </head>
 <body class="bg-white text-gray-900">
-<header class="bg-white shadow-md sticky top-0 z-50 animate-slide-down">
 
-  <!-- Mobile Header (Logo Centered, Links in Two Rows) -->
-  <div class="md:hidden flex flex-col items-center py-3 space-y-2">
-    <!-- Logo Centered -->
-    <div class="text-xl font-bold text-primary-600 animate-fade-in">
-      <i class="fas fa-code mr-1"></i>WebDuos
-    </div>
+    <header class="bg-white shadow-md sticky top-0 z-50 animate-slide-down">
+        <!-- Mobile Header (Logo Centered, Links in One Line) -->
+        <div class="md:hidden flex flex-col items-center py-3 space-y-2">
+            <!-- Logo Centered -->
+            <div class="text-xl font-bold text-primary-600 animate-scale-in">
+                <i class="fas fa-code mr-1"></i>WebDuos
+            </div>
 
-    <!-- Two Rows of Links -->
-    <div class="flex flex-col items-center space-y-2 w-full px-2">
-      <!-- First Row (3 links) -->
-      <div class="flex justify-center space-x-4 w-full">
-        <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium underline-animation">Home</a>
-        <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium underline-animation">About</a>
-        <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium underline-animation">Story</a>
-      </div>
-      
-      <!-- Second Row (3 links + Get Quote) -->
-      <div class="flex justify-center space-x-4 w-full">
-        <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium underline-animation">Services</a>
-        <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium underline-animation">Work</a>
-        <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors whitespace-nowrap text-sm font-medium underline-animation">Contact</a>
-        <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition whitespace-nowrap text-sm font-medium hover-grow hover-shadow-lg">Get Quote</a>
-      </div>
-    </div>
-  </div>
+            <!-- Horizontal Scrollable Links -->
+            <nav class="flex overflow-x-auto space-x-14 px-4 text-sm font-medium scrollbar-hide">
+                <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">Home</a>
+                <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">About</a>
+                <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">Story</a>
+            </nav>
+            <div class ="w-full flex justify-center items-center space-x-8 mt-2">
+                <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">Services</a>
+                <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">Work</a>
+                <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 whitespace-nowrap">Contact</a>
+                <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition whitespace-nowrap hover:animate-pulse-slow"> Get Quote</a>
+            </div>
+        </div>
 
-  <!-- Desktop Header (Hidden on Mobile) - Unchanged -->
-  <div class="hidden md:flex justify-between items-center h-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Logo with Image -->
-    <div class="text-xl font-bold text-primary-600 flex items-center animate-fade-in hover-rotate">
-      <img src="https://i.postimg.cc/MTrx7JRg/logo.png" alt="WebDuos Logo" class="h-14 w-14 mr-3 object-contain">
-      WebDuos
-    </div>
+        <!-- Desktop Header (Hidden on Mobile) -->
+        <div class="hidden md:flex justify-between items-center h-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Logo with Image -->
+            <div class="text-xl font-bold text-primary-600 flex items-center animate-scale-in">
+                <img src="https://i.postimg.cc/MTrx7JRg/logo.png" alt="WebDuos Logo" class="h-14 w-14 mr-3 object-contain hover-grow">
+                WebDuos
+            </div>
 
-    <!-- Desktop Navigation with Increased Gap -->
-    <nav class="flex space-x-12 text-sm font-medium">
-      <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-colors underline-animation">Home</a>
-      <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-colors underline-animation">About</a>
-      <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-colors underline-animation">Story</a>
-      <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-colors underline-animation">Services</a>
-      <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-colors underline-animation">Work</a>
-      <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-colors underline-animation">Contact</a>
-      <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition hover-grow hover-shadow-lg">Get Quote</a>
-    </nav>
-  </div>
-</header>
+            <!-- Desktop Navigation with Increased Gap -->
+            <nav class="flex space-x-12 text-sm font-medium">
+                <a href="index.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">Home</a>
+                <a href="about.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">About</a>
+                <a href="story.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">Story</a>
+                <a href="services.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">Services</a>
+                <a href="portfolio.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">Work</a>
+                <a href="contact.html" class="text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105">Contact</a>
+                <a href="request.html" class="text-white bg-primary-600 hover:bg-primary-700 px-3 py-1 rounded transition hover:animate-pulse-slow">Get Quote</a>
+            </nav>
+        </div>
+    </header>
 
 
     <!-- Hero Section -->
